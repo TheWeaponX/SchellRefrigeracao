@@ -25,7 +25,9 @@
   <meta property="og:url" content="https://www.schellrefrigeracao.com.br/" />
   <meta property="og:site_name" content="Schell Refrigeração" />
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:image" content="https://www.schellrefrigeracao.com.br/og-image.jpg" />
+  <!-- FALLBACK: imagem placeholder caso a original não exista -->
+<meta property="og:image" content="https://placehold.co/1200x630/172340/c4892d?text=Schell+Refrigeração" />
+<meta property="og:image:secure_url" content="https://placehold.co/1200x630/172340/c4892d?text=Schell+Refrigeração" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="business:contact_data:locality" content="Criciúma" />
@@ -846,7 +848,7 @@
       <li><a href="#contact">Contato</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Solicitar Visita</a>
-    <button class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -1179,58 +1181,59 @@
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="contact-info">
-      <span class="section-label reveal">Fale Conosco</span>
-      <h2 class="section-title reveal reveal-delay-1">Vamos criar algo<br/><em>extraordinário</em><br/>juntos.</h2>
-      <p class="reveal reveal-delay-2" style="margin-top:1.5rem;">Entre em contato para uma consultoria personalizada. Nossa equipe está pronta para atender você com a atenção e o cuidado que você merece.</p>
-      <div class="contact-detail reveal reveal-delay-3">
-        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-        <div class="contact-detail-text"><strong>Telefone / WhatsApp</strong>(48) 98834-0861</div>
+  <div class="contact-info">
+    <span class="section-label reveal">Fale Conosco</span>
+    <h2 class="section-title reveal reveal-delay-1">Vamos criar algo<br/><em>extraordinário</em><br/>juntos.</h2>
+    <p class="reveal reveal-delay-2" style="margin-top:1.5rem;">Entre em contato para uma consultoria personalizada. Nossa equipe está pronta para atender você com a atenção e o cuidado que você merece.</p>
+    <div class="contact-detail reveal reveal-delay-3">
+      <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+      <div class="contact-detail-text"><strong>Telefone / WhatsApp</strong>(48) 98834-0861</div>
+    </div>
+    <div class="contact-detail reveal reveal-delay-3">
+      <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="contact-detail-text"><strong>E-mail</strong>contato@schellrefrigeracao.com.br</div>
+    </div>
+    <div class="contact-detail reveal reveal-delay-3">
+      <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="contact-detail-text"><strong>Atendemos em</strong>Criciúma e toda a região sul catarinense</div>
+    </div>
+  </div>
+  <form class="contact-form reveal reveal-delay-2" id="contactForm">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Nome *</label>
+        <input type="text" id="name" name="nome" placeholder="Seu nome completo" required />
       </div>
-      <div class="contact-detail reveal reveal-delay-3">
-        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div class="contact-detail-text"><strong>E-mail</strong>contato@schellrefrigeracao.com.br</div>
-      </div>
-      <div class="contact-detail reveal reveal-delay-3">
-        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="contact-detail-text"><strong>Atendemos em</strong>Criciúma e toda a região sul catarinense</div>
+      <div class="form-group">
+        <label for="phone">Telefone *</label>
+        <input type="tel" id="phone" name="telefone" placeholder="(48) 98834-0861" required />
       </div>
     </div>
-    <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Nome</label>
-          <input type="text" id="name" placeholder="Seu nome completo" />
-        </div>
-        <div class="form-group">
-          <label for="phone">Telefone</label>
-          <input type="tel" id="phone" placeholder="(48) 98834-0861" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" placeholder="seu@email.com" />
-      </div>
-      <div class="form-group">
-        <label for="service">Serviço de Interesse</label>
-        <select id="service">
-          <option value="" disabled selected>Selecione um serviço</option>
-          <option>Climatização Residencial</option>
-          <option>Sistemas Comerciais</option>
-          <option>Manutenção Preventiva</option>
-          <option>Laudos & Projetos</option>
-          <option>Smart Home & Automação</option>
-          <option>VRF & Multi-Split</option>
-          <option>Outro</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Mensagem</label>
-        <textarea id="message" rows="4" placeholder="Descreva brevemente seu projeto ou necessidade..."></textarea>
-      </div>
-      <button type="submit" class="form-submit">Enviar Mensagem</button>
-    </form>
-  </section>
+    <div class="form-group">
+      <label for="email">E-mail *</label>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+    </div>
+    <div class="form-group">
+      <label for="service">Serviço de Interesse</label>
+      <select id="service" name="servico">
+        <option value="" disabled selected>Selecione um serviço</option>
+        <option>Climatização Residencial</option>
+        <option>Sistemas Comerciais</option>
+        <option>Manutenção Preventiva</option>
+        <option>Laudos & Projetos</option>
+        <option>Smart Home & Automação</option>
+        <option>VRF & Multi-Split</option>
+        <option>Outro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Mensagem *</label>
+      <textarea id="message" name="mensagem" rows="4" placeholder="Descreva brevemente seu projeto ou necessidade..." required></textarea>
+    </div>
+    <button type="submit" class="form-submit">Enviar Mensagem</button>
+    <div id="formStatus" style="margin-top: 1rem; font-size: 0.85rem;"></div>
+  </form>
+</section>
 
   <!-- FAQ — SEO + UX -->
   <section id="faq" style="background:var(--navy-d); padding:6rem 5vw;">
@@ -1293,17 +1296,17 @@
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© 2025 Schell Refrigeração. Todos os direitos reservados.</p>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a href="#" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        </a>
-        <a href="#" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-      </div>
+    <div class="footer-social">
+  <a href="https://www.instagram.com/schellrefrigeracao" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+  <a href="https://wa.me/5548988340861" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </a>
+  <a href="https://www.facebook.com/schellrefrigeracao" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  </a>
+</div>
     </div>
   </footer>
 
@@ -1326,13 +1329,14 @@
     window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
 
     // ── MOBILE MENU ──
-    function toggleMobile() {
-      const menu = document.getElementById('mobileMenu');
-      const ham  = document.getElementById('hamburger');
-      const open = menu.classList.toggle('open');
-      ham.classList.toggle('open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    }
+   function toggleMobile() {
+  const menu = document.getElementById('mobileMenu');
+  const ham  = document.getElementById('hamburger');
+  const open = menu.classList.toggle('open');
+  ham.classList.toggle('open', open);
+  if (ham) ham.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
     function closeMobile() {
       document.getElementById('mobileMenu').classList.remove('open');
       document.getElementById('hamburger').classList.remove('open');
@@ -1365,15 +1369,62 @@
     track.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend',   e => { const dx = tsX - e.changedTouches[0].clientX; if (Math.abs(dx) > 40) slideTest(dx > 0 ? 1 : -1); }, { passive: true });
 
-    // ── FORM SUBMIT ──
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      const original = btn.textContent;
-      btn.textContent = 'Mensagem Enviada ✓';
-      btn.style.background = '#2d8a5e';
-      setTimeout(() => { btn.textContent = original; btn.style.background = ''; }, 3500);
+   // ── FORM SUBMIT CORRIGIDO ──
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = this.querySelector('.form-submit');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.disabled = true;
+    
+    try {
+      const nome = document.getElementById('name').value;
+      const telefone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const servico = document.getElementById('service').value;
+      const mensagem = document.getElementById('message').value;
+      
+      // Validação básica
+      if (!nome || !telefone || !email || !mensagem) {
+        throw new Error('Por favor, preencha todos os campos obrigatórios (*)');
+      }
+      
+      // Prepara mensagem para WhatsApp
+      const whatsappMsg = `Olá! Gostaria de solicitar um orçamento.%0A%0A*Dados:*%0A📛 Nome: ${nome}%0A📞 Telefone: ${telefone}%0A✉️ Email: ${email}%0A🔧 Serviço: ${servico || 'Não especificado'}%0A📝 Mensagem: ${mensagem}`;
+      
+      // Abre WhatsApp com os dados
+      window.open(`https://wa.me/5548988340861?text=${whatsappMsg}`, '_blank');
+      
+      // Limpa formulário
+      this.reset();
+      
+      if (formStatus) {
+        formStatus.innerHTML = '<span style="color:#2d8a5e;">✓ Mensagem enviada! Entraremos em contato em breve.</span>';
+      }
+      submitBtn.textContent = 'Mensagem Enviada ✓';
+      submitBtn.style.background = '#2d8a5e';
+      
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+        if (formStatus) formStatus.innerHTML = '';
+      }, 5000);
+      
+    } catch (error) {
+      if (formStatus) {
+        formStatus.innerHTML = `<span style="color:#e74c3c;">❌ ${error.message || 'Erro ao enviar. Tente novamente ou ligue para (48) 98834-0861.'}</span>`;
+      }
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     }
+  });
+}
 
     // ── WHATSAPP BADGE DISMISS ──
     const badge = document.querySelector('.whatsapp-badge');
@@ -1393,32 +1444,45 @@
     ];
 
     const faqList = document.getElementById('faqList');
-    faqList.innerHTML = faqs.map((f, i) => `
-      <div class="faq-item reveal" style="border-bottom:1px solid rgba(196,137,45,.1); padding:1.6rem 0;" data-idx="${i}">
-        <button onclick="toggleFaq(${i})" style="width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;color:var(--white);">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;line-height:1.3;">${f.q}</span>
-          <span class="faq-icon" id="faq-icon-${i}" style="color:var(--gold);font-size:1.4rem;flex-shrink:0;transition:transform .3s;">+</span>
-        </button>
-        <div class="faq-answer" id="faq-ans-${i}" style="max-height:0;overflow:hidden;transition:max-height .4s ease, padding .3s ease;">
-          <p style="font-size:.88rem;line-height:1.9;color:var(--white-d);padding-top:1rem;">${f.a}</p>
-        </div>
-      </div>`).join('');
+   faqList.innerHTML = faqs.map((f, i) => `
+  <div class="faq-item reveal" style="border-bottom:1px solid rgba(196,137,45,.1); padding:1.6rem 0;" data-idx="${i}">
+    <button onclick="toggleFaq(${i})" 
+            style="width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;color:var(--white);"
+            aria-expanded="false"
+            id="faq-btn-${i}">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;line-height:1.3;">${f.q}</span>
+      <span class="faq-icon" id="faq-icon-${i}" style="color:var(--gold);font-size:1.4rem;flex-shrink:0;transition:transform .3s;">+</span>
+    </button>
+    <div class="faq-answer" id="faq-ans-${i}" style="max-height:0;overflow:hidden;transition:max-height .4s ease, padding .3s ease;" aria-labelledby="faq-btn-${i}">
+      <p style="font-size:.88rem;line-height:1.9;color:var(--white-d);padding-top:1rem;">${f.a}</p>
+    </div>
+  </div>`).join('');
 
     let openFaq = null;
-    function toggleFaq(idx) {
-      const ans  = document.getElementById('faq-ans-'+idx);
-      const icon = document.getElementById('faq-icon-'+idx);
-      if (openFaq !== null && openFaq !== idx) {
-        document.getElementById('faq-ans-'+openFaq).style.maxHeight = '0';
-        document.getElementById('faq-icon-'+openFaq).textContent = '+';
-        document.getElementById('faq-icon-'+openFaq).style.transform = 'rotate(0deg)';
-      }
-      const isOpen = ans.style.maxHeight !== '0px' && ans.style.maxHeight !== '';
-      ans.style.maxHeight   = isOpen ? '0' : '300px';
-      icon.textContent      = isOpen ? '+' : '−';
-      icon.style.transform  = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-      openFaq = isOpen ? null : idx;
-    }
+   window.toggleFaq = function(idx) {
+  const ans = document.getElementById('faq-ans-'+idx);
+  const icon = document.getElementById('faq-icon-'+idx);
+  const btn = document.getElementById('faq-btn-'+idx);
+  
+  if (!ans || !icon) return;
+  
+  if (openFaq !== null && openFaq !== idx) {
+    const prevAns = document.getElementById('faq-ans-'+openFaq);
+    const prevIcon = document.getElementById('faq-icon-'+openFaq);
+    const prevBtn = document.getElementById('faq-btn-'+openFaq);
+    if (prevAns) prevAns.style.maxHeight = '0';
+    if (prevIcon) prevIcon.textContent = '+';
+    if (prevIcon) prevIcon.style.transform = 'rotate(0deg)';
+    if (prevBtn) prevBtn.setAttribute('aria-expanded', 'false');
+  }
+  
+  const isOpen = ans.style.maxHeight !== '0px' && ans.style.maxHeight !== '';
+  ans.style.maxHeight = isOpen ? '0' : '300px';
+  icon.textContent = isOpen ? '+' : '−';
+  icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+  if (btn) btn.setAttribute('aria-expanded', !isOpen);
+  openFaq = isOpen ? null : idx;
+}
 
     // Re-observe FAQ items for reveal
     document.querySelectorAll('.faq-item').forEach(el => io.observe(el));
