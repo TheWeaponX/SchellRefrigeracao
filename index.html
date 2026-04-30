@@ -792,6 +792,22 @@
       .process-steps { grid-template-columns: 1fr; }
       .hero-title { font-size: 2.4rem; }
     }
+/* CORREÇÃO: Menu mobile só aparece quando tem a classe .open */
+.mobile-menu {
+  transform: translateX(100%);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Garantir que em desktop o menu não apareça acidentalmente */
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+    
   </style>
 </head>
 <body>
