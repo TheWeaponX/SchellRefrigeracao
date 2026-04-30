@@ -263,12 +263,18 @@
     }
     @keyframes rotateSlow { to { transform: translateY(-50%) rotate(360deg); } }
 
-    .hero-tag {
-      position: relative; z-index: 2;
-      font-size: .68rem; letter-spacing: .35em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.8rem;
-      opacity: 0; animation: fadeUp .8s .3s forwards;
-    }
+  .hero-tag {
+  position: relative;
+  z-index: 2;
+  font-size: .68rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+  margin-top: 80px;  /* ← ADICIONE ESTA LINHA */
+  opacity: 0;
+  animation: fadeUp .8s .3s forwards;
+}
     .hero-tag::before {
       content: ''; display: inline-block; width: 40px; height: 1px;
       background: var(--gold); vertical-align: middle; margin-right: 14px;
