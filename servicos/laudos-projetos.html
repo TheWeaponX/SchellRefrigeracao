@@ -50,6 +50,12 @@
     footer { background: var(--navy-d); border-top: 1px solid rgba(196,137,45,.12); padding: 3rem 5vw 2rem; text-align: center; }
     .footer-copy { font-size: .75rem; color: rgba(255,255,255,.3); }
     @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; gap: 2rem; } .benefits-grid { grid-template-columns: 1fr; } nav { height: 68px; } .page-header { margin-top: 68px; padding: 4rem 5vw 2rem; } }
+ /* FORÇA OCULTAR O CURSOR PADRÃO EM DESKTOP */
+@media (min-width: 769px) {
+  body, body * {
+    cursor: none !important;
+  }
+}
   </style>
 </head>
 <body>
