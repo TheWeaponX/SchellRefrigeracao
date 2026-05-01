@@ -813,7 +813,12 @@
     display: none !important;
   }
 }
-    
+ /* FORÇA OCULTAR O CURSOR PADRÃO EM DESKTOP */
+@media (min-width: 769px) {
+  body, body * {
+    cursor: none !important;
+  }
+}   
   </style>
 </head>
 <body>
