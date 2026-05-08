@@ -1156,7 +1156,7 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+    <!-- TESTIMONIALS CORRIGIDO -->
   <section id="testimonials">
     <div class="testimonials-header">
       <span class="section-label reveal">Depoimentos</span>
@@ -1166,41 +1166,41 @@
       <div class="testimonials-track" id="testTrack">
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="test-text">"Todas as vezes que tive problema e procurei pelos serviços da Schell Refrigeração, eles resolveram. E fizeram sempre alem do que eu esperava. São profissionais e muito solícitos, por tudo isso eu Recomendo a Schell Refrigeração.."</p>
+          <p class="test-text">"Todas as vezes que tive problema e procurei pelos serviços da Schell Refrigeração, eles resolveram. E fizeram sempre além do que eu esperava. São profissionais e muito solícitos, por tudo isso eu recomendo a Schell Refrigeração."</p>
           <div class="test-author">
-            <div class="test-avatar">A</div>
+            <div class="test-avatar">J</div>
             <div><div class="test-name">John Sebastian Lopes</div><div class="test-role">Residência em Criciúma</div></div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="test-text">"Ótimo profissional,super recomendo 👏👏👏."</p>
+          <p class="test-text">"Ótimo profissional, super recomendo 👏👏👏."</p>
           <div class="test-author">
-            <div class="test-avatar">R</div>
-            <div><div class="test-name">Vanderleia Trajano</div></div>
+            <div class="test-avatar">V</div>
+            <div><div class="test-name">Vanderleia Trajano</div><div class="test-role">Cliente</div></div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="test-text">"Ótimo atendimento, serviço profissional!"</p>
           <div class="test-author">
-            <div class="test-avatar">M</div>
+            <div class="test-avatar">J</div>
             <div><div class="test-name">João Vitor</div><div class="test-role">Projetista - Técnico em Eletromecânica</div></div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="test-text">"Muito bom o atendimento, serviço realizado com capricho ,passando segurança ao cliente."</p>
+          <p class="test-text">"Muito bom o atendimento, serviço realizado com capricho, passando segurança ao cliente."</p>
           <div class="test-author">
-            <div class="test-avatar">C</div>
-            <div><div class="test-name">Maria Jucilene</div></div>
+            <div class="test-avatar">M</div>
+            <div><div class="test-name">Maria Jucilene</div><div class="test-role">Cliente</div></div>
           </div>
         </div>
       </div>
     </div>
     <div class="testimonials-nav">
-      <button class="test-btn" id="testPrev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="test-btn" id="testNext"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <button class="test-btn" id="testPrev" aria-label="Depoimento anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="test-btn" id="testNext" aria-label="Próximo depoimento"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
   </section>
 
@@ -1413,24 +1413,116 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => io.observe(el));
 
-    // ── TESTIMONIALS SLIDER ──
+        // ── TESTIMONIALS SLIDER CORRIGIDO ──
     const track = document.getElementById('testTrack');
     let testIdx = 0;
-    const totalCards = track.children.length;
-    const visibleCards = () => window.innerWidth <= 768 ? 1 : 2;
-    const maxIdx = () => Math.max(0, totalCards - visibleCards());
-    function slideTest(dir) {
-      testIdx = Math.max(0, Math.min(testIdx + dir, maxIdx()));
-      const gap  = window.innerWidth <= 768 ? 0 : 32;
-      const cardW = track.children[0].getBoundingClientRect().width + gap;
-      track.style.transform = `translateX(-${testIdx * cardW}px)`;
+    let currentVisibleCards = 0;
+    let cardWidth = 0;
+    let gap = 0;
+    
+    function updateCarouselDimensions() {
+      if (!track || track.children.length === 0) return;
+      
+      // Obtém o container pai
+      const container = track.parentElement;
+      const containerWidth = container.clientWidth;
+      
+      // Pega o primeiro card para referência
+      const firstCard = track.children[0];
+      const cardStyle = window.getComputedStyle(firstCard);
+      
+      // Calcula largura total do card (incluindo margens)
+      const cardRect = firstCard.getBoundingClientRect();
+      cardWidth = cardRect.width;
+      
+      // O gap vem do CSS (gap: 2rem no .testimonials-track)
+      gap = parseInt(window.getComputedStyle(track).gap) || 32;
+      
+      // Calcula quantos cards cabem visivelmente (mobile = 1, desktop = 2)
+      const possibleCards = Math.floor((containerWidth + gap) / (cardWidth + gap));
+      currentVisibleCards = Math.min(possibleCards, track.children.length);
+      
+      // Se for desktop e o container for grande, força 2 cards
+      if (window.innerWidth > 768 && possibleCards >= 2) {
+        currentVisibleCards = 2;
+      } else if (window.innerWidth <= 768) {
+        currentVisibleCards = 1;
+      }
+      
+      // Ajusta o índice máximo
+      const maxIndex = Math.max(0, track.children.length - currentVisibleCards);
+      if (testIdx > maxIndex) testIdx = maxIndex;
+      
+      return maxIndex;
     }
-    document.getElementById('testPrev').onclick = () => slideTest(-1);
-    document.getElementById('testNext').onclick = () => slideTest(1);
-    // touch swipe
-    let tsX = 0;
-    track.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend',   e => { const dx = tsX - e.changedTouches[0].clientX; if (Math.abs(dx) > 40) slideTest(dx > 0 ? 1 : -1); }, { passive: true });
+    
+    function slideTest(direction) {
+      if (!track) return;
+      
+      const maxIndex = Math.max(0, track.children.length - currentVisibleCards);
+      let newIdx = testIdx + direction;
+      
+      if (newIdx < 0) newIdx = 0;
+      if (newIdx > maxIndex) newIdx = maxIndex;
+      
+      testIdx = newIdx;
+      
+      // Calcula o deslocamento
+      const offset = -(testIdx * (cardWidth + gap));
+      track.style.transform = `translateX(${offset}px)`;
+      track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    }
+    
+    function resetAndSlide() {
+      updateCarouselDimensions();
+      slideTest(0);
+    }
+    
+    // Eventos dos botões
+    const prevBtn = document.getElementById('testPrev');
+    const nextBtn = document.getElementById('testNext');
+    
+    if (prevBtn && nextBtn && track) {
+      prevBtn.addEventListener('click', () => slideTest(-1));
+      nextBtn.addEventListener('click', () => slideTest(1));
+      
+      // Inicializa
+      resetAndSlide();
+      
+      // Recalcula ao redimensionar a tela
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          resetAndSlide();
+        }, 150);
+      });
+      
+      // Touch swipe (mobile)
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            slideTest(1); // deslizou para esquerda -> próximo
+          } else {
+            slideTest(-1); // deslizou para direita -> anterior
+          }
+        }
+      }, { passive: true });
+      
+      // Previne drag da imagem
+      track.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+      });
+    }
 
    // ── FORM SUBMIT CORRIGIDO ──
 const contactForm = document.getElementById('contactForm');
