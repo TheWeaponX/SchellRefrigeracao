@@ -202,11 +202,18 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(196,137,45,.18);
     }
-    .nav-logo {
-      display: flex; align-items: center; gap: 14px;
-      text-decoration: none;
-    }
-    .nav-logo svg { height: 36px; width: auto; }
+    nav.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-schell-quadrado.png {
+    max-height: 50px; /* Ajuste o tamanho conforme necessário */
+    width: auto;
+}
+
     .nav-logo-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.1rem; letter-spacing: .25em;
