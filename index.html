@@ -53,7 +53,7 @@
         "description": "Empresa especializada em instalação, manutenção e projetos de refrigeração comercial de alto padrão em Criciúma e região carbonífera de Santa Catarina.",
         "url": "https://www.schellrefrigeracao.com.br",
         "telephone": "+55-48-98834-0861",
-        "email": "schell_services@outlook.com",
+        "email": "contato@schellrefrigeracao.com.br",
         "foundingDate": "2009",
         "logo": "https://www.schellrefrigeracao.com.br/logo-schell-quadrado.png",
         "image": "https://www.schellrefrigeracao.com.br/og-image.jpg",
@@ -140,7 +140,7 @@
   }
   </script>
 
-  <!-- ── FAVICON PLACEHOLDER ── -->
+  <!-- ── FAVICON ── -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><rect width='60' height='60' fill='%230f1829'/><g stroke='%23c4892d' stroke-width='1.8' stroke-linecap='round'><line x1='30' y1='5' x2='30' y2='55'/><line x1='5' y1='30' x2='55' y2='30'/><line x1='13' y1='13' x2='47' y2='47'/><line x1='47' y1='13' x2='13' y2='47'/></g></svg>" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -202,17 +202,17 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(196,137,45,.18);
     }
-    nav.logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
 
-.logo-schell-quadrado.png {
-    max-height: 50px; /* Ajuste o tamanho conforme necessário */
-    width: auto;
-}
+    /* FIX 1 & 2: corrigido seletor nav .logo e .logo img */
+    nav .logo {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .logo img {
+      max-height: 50px;
+      width: auto;
+    }
 
     .nav-logo-text {
       font-family: 'Cormorant Garamond', serif;
@@ -369,10 +369,13 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
     }
     .about-visual { position: relative; }
+
+    /* FIX 3: adicionado position: relative ao .about-card */
     .about-card {
       background: var(--navy-m);
       border: 1px solid rgba(196,137,45,.14);
-      padding: 3.5rem; position: relative;
+      padding: 3.5rem;
+      position: relative; /* FIX: necessário para posicionar filhos absolutos corretamente */
     }
     .about-card::before {
       content: ''; position: absolute; top: -1px; left: 3rem; right: 3rem; height: 2px;
@@ -482,15 +485,13 @@
     #testimonials { overflow: hidden; }
     .testimonials-header { max-width: 500px; margin-bottom: 4rem; }
     .testimonials-wrap { overflow: hidden; }
-
-    /* ── FIX: usa width em vez de min-width para o cálculo percentual ser confiável ── */
     .testimonials-track {
       display: flex;
       gap: 2rem;
       transition: transform .6s cubic-bezier(.25,.46,.45,.94);
     }
     .testimonial-card {
-      width: calc(50% - 1rem);   /* ← width, não min-width */
+      width: calc(50% - 1rem);
       flex-shrink: 0;
       background: var(--navy);
       border: 1px solid rgba(196,137,45,.1);
@@ -597,7 +598,18 @@
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus { border-color: var(--gold); background: rgba(196,137,45,.04); }
-    .form-group select option { background: var(--navy-d); }
+
+    /* FIX 9: select com aparência correta em todos os navegadores */
+    .form-group select {
+      appearance: none;
+      -webkit-appearance: none;
+      color: var(--white);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c4892d' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .form-group select option { background: var(--navy-d); color: var(--white); }
     .form-submit {
       padding: 1rem 2.5rem; background: var(--gold); color: var(--navy-d);
       border: none; font-family: 'Montserrat', sans-serif;
@@ -619,8 +631,8 @@
     .footer-brand p { font-size: .84rem; line-height: 1.9; color: var(--white-d); margin-top: 1.2rem; max-width: 280px; }
     .footer-col h4 { font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.3rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
-    .footer-col ul a { font-size: .84rem; color: var(--white-d); text-decoration: none; transition: color .2s; }
-    .footer-col ul a:hover { color: var(--gold); }
+    .footer-col ul li a { font-size: .84rem; color: var(--white-d); text-decoration: none; transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--gold); }
     .footer-bottom {
       display: flex; align-items: center; justify-content: space-between;
       padding-top: 2rem; flex-wrap: wrap; gap: 1rem;
@@ -749,7 +761,6 @@
       .strip { gap: 1.5rem; padding: .8rem 5vw; overflow-x: auto; justify-content: flex-start; flex-wrap: nowrap; }
       .strip::-webkit-scrollbar { display: none; }
 
-      /* ── FIX mobile: card ocupa 100% da largura ── */
       .testimonial-card { width: 100%; padding: 2rem; }
       .testimonials-track { gap: 0; }
 
@@ -812,10 +823,10 @@
 
   <!-- NAV -->
   <nav id="navbar">
-  <div class="logo">
-        <a href="index.html">
-            <img src="logo-schell-quadrado.png" alt="logo-schell-quadrado.png">
-        </a>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo-schell-quadrado.png" alt="Schell Refrigeração" />
+      </a>
     </div>
     <ul class="nav-links">
       <li><a href="#about">Sobre</a></li>
@@ -1172,6 +1183,7 @@
       </div>
       <div class="contact-detail reveal reveal-delay-3">
         <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <!-- FIX 6: e-mail padronizado em todo o site -->
         <div class="contact-detail-text"><strong>E-mail</strong>contato@schellrefrigeracao.com.br</div>
       </div>
       <div class="contact-detail reveal reveal-delay-3">
@@ -1247,14 +1259,16 @@
         </div>
         <p>Excelência em refrigeração para quem valoriza conforto, qualidade e um atendimento verdadeiramente diferenciado.</p>
       </div>
+
+      <!-- FIX 4: <a> dentro de <li> em todos os itens do footer -->
       <div class="footer-col">
         <h4>Serviços</h4>
         <ul>
-          <a href="servicos/climatizacao-residencial.html." class="btn-link">Residencial</a>
-          <a href="servicos/sistemas-comerciais.html" class="btn-link">Sistemas Comerciais</a>
-          <a href="servicos/laudos-projetos.html" class="btn-link">Laudos e Projetos</a>
-          <a href="servicos/smart-home-automacao.html" class="btn-link">Smart Home</a>
-          <a href="servicos/vrf-multi-split.html" class="btn-link">VRF & Multi-Split</a>
+          <li><a href="servicos/climatizacao-residencial.html">Residencial</a></li>
+          <li><a href="servicos/sistemas-comerciais.html">Sistemas Comerciais</a></li>
+          <li><a href="servicos/laudos-projetos.html">Laudos e Projetos</a></li>
+          <li><a href="servicos/smart-home-automacao.html">Smart Home</a></li>
+          <li><a href="servicos/vrf-multi-split.html">VRF & Multi-Split</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1270,13 +1284,15 @@
         <h4>Contato</h4>
         <ul>
           <li><a href="tel:+5548988340861">(48) 98834-0861</a></li>
-          <li><a href="mailto:contato@schellrefrigeracao.com.br">schell_services@outlook.com</a></li>
+          <!-- FIX 6: e-mail padronizado -->
+          <li><a href="mailto:contato@schellrefrigeracao.com.br">contato@schellrefrigeracao.com.br</a></li>
           <li><a href="#contact">Criciúma, SC</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 Schell Refrigeração. Todos os direitos reservados.</p>
+      <!-- FIX 7: ano atualizado para 2026 -->
+      <p class="footer-copy">© 2026 Schell Refrigeração. Todos os direitos reservados.</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/schellrefrigeracao" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1339,7 +1355,7 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => io.observe(el));
 
-    // ── TESTIMONIALS SLIDER (CORRIGIDO) ──
+    // ── TESTIMONIALS SLIDER ──
     const track = document.getElementById('testTrack');
     let testIdx = 0;
 
@@ -1351,7 +1367,6 @@
       if (!track?.parentElement) return 0;
       const wrapperWidth = track.parentElement.offsetWidth;
       const visible = getVisibleCount();
-      // gap: 2rem em desktop, 0 em mobile (ver CSS)
       const gap = window.innerWidth <= 768 ? 0 : 32;
       const cardWidth = (wrapperWidth - gap * (visible - 1)) / visible;
       return cardWidth + gap;
@@ -1371,7 +1386,6 @@
     }
 
     if (track) {
-      // Aguarda tudo renderizado (fontes incluídas) antes de calcular
       window.addEventListener('load', updateSlider);
 
       let resizeTimer;
@@ -1383,7 +1397,6 @@
       document.getElementById('testPrev')?.addEventListener('click', () => slideTest(-1));
       document.getElementById('testNext')?.addEventListener('click', () => slideTest(1));
 
-      // Touch swipe
       let touchStart = 0;
       track.addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; }, { passive: true });
       track.addEventListener('touchend', e => {
