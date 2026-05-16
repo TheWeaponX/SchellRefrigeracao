@@ -185,4 +185,8 @@
     if (!isTouchDevice()) { document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; }); (function animRing() { rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })(); }
     const navbar = document.getElementById('navbar'); window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
     function toggleMobile() { const menu = document.getElementById('mobileMenu'); const ham = document.getElementById('hamburger'); const open = menu.classList.toggle('open'); ham.classList.toggle('open', open); if (ham) ham.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; }
-    function closeMobile() { document.getElementById
+    function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburger').classList.remove('open'); document.body.style.overflow = ''; }
+    const reveals = document.querySelectorAll('.reveal'); const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }); }, { threshold: 0.1 }); reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
