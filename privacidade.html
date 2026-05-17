@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>Política de Privacidade | Schell Refrigeração</title>
+  <meta name="description" content="Política de Privacidade da Schell Refrigeração. Saiba como coletamos, usamos e protegemos seus dados pessoais em conformidade com a LGPD." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://www.schellrefrigeracao.com.br/politica-de-privacidade" />
+  <link rel="icon" type="image/png" href="logo-schell-quadrado.png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:    #172340;
+      --navy-d:  #0f1829;
+      --navy-m:  #1e2e52;
+      --gold:    #c4892d;
+      --gold-l:  #d9a44e;
+      --gold-d:  #9e6e20;
+      --white:   #f4f0eb;
+      --white-d: #c8c0b4;
+      --glass:   rgba(23, 35, 64, 0.72);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy-d);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── CURSOR ── */
+    .cursor {
+      position: fixed; width: 10px; height: 10px;
+      background: var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width .2s, height .2s, background .2s;
+    }
+    .cursor-ring {
+      position: fixed; width: 36px; height: 36px;
+      border: 1px solid var(--gold-l); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: width .25s, height .25s, border-color .25s;
+      opacity: .6;
+    }
+    body:has(a:hover) .cursor,
+    body:has(button:hover) .cursor { width: 16px; height: 16px; background: var(--gold-l); }
+    body:has(a:hover) .cursor-ring,
+    body:has(button:hover) .cursor-ring { width: 54px; height: 54px; border-color: var(--gold); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 80px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(196,137,45,.18);
+    }
+    .logo img { max-height: 50px; width: auto; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--white-d); text-decoration: none;
+      font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+      position: relative; transition: color .25s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold); transform: scaleX(0);
+      transform-origin: left; transition: transform .3s;
+    }
+    .nav-links a:hover { color: var(--gold-l); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      padding: .6rem 1.6rem; border: 1px solid var(--gold);
+      color: var(--gold); font-size: .72rem; letter-spacing: .18em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background .25s, color .25s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--navy-d); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 26px; height: 1px; background: var(--gold); transition: .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      position: fixed; inset: 0; background: var(--navy-d); z-index: 99;
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      transform: translateX(100%); transition: transform .45s cubic-bezier(.77,0,.18,1);
+      padding: 6rem 8vw 4rem;
+    }
+    .mobile-menu.open { transform: translateX(0); display: flex; }
+    .mobile-menu a {
+      font-size: 2rem; letter-spacing: .12em; color: var(--white);
+      text-decoration: none; font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      padding: 1rem 0; width: 100%; border-bottom: 1px solid rgba(196,137,45,.1);
+      display: flex; align-items: center; justify-content: space-between;
+      opacity: 0; transform: translateX(30px); transition: opacity .4s, transform .4s, color .2s;
+    }
+    .mobile-menu.open a { opacity: 1; transform: translateX(0); }
+    .mobile-menu.open a:nth-child(1) { transition-delay: .1s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: .17s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: .24s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: .31s; }
+    .mobile-menu.open a:nth-child(5) { transition-delay: .38s; }
+    .mobile-menu a::after { content: '→'; color: var(--gold); font-size: 1.2rem; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 140px 5vw 5rem;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid rgba(196,137,45,.1);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 50% 70% at 80% 30%, rgba(196,137,45,.06) 0%, transparent 55%),
+        linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 60%, var(--navy-d) 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0; opacity: .03;
+      background-image:
+        linear-gradient(rgba(196,137,45,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,137,45,1) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: end; gap: 4rem;
+    }
+    .breadcrumb {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--white-d); margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; transition: opacity .2s; }
+    .breadcrumb a:hover { opacity: .7; }
+    .breadcrumb svg { width: 10px; stroke: var(--white-d); fill: none; stroke-width: 2; }
+    .hero-tag {
+      font-size: .65rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--gold); display: flex; align-items: center; gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      font-weight: 300; line-height: 1.05; color: var(--white);
+    }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-meta {
+      display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--white-d);
+    }
+    .hero-meta-item svg { width: 14px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .hero-badge {
+      align-self: flex-end;
+      padding: 1.2rem 1.8rem;
+      border: 1px solid rgba(196,137,45,.2);
+      background: rgba(196,137,45,.04);
+      text-align: center; flex-shrink: 0;
+    }
+    .hero-badge-label {
+      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); display: block; margin-bottom: .4rem;
+    }
+    .hero-badge-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; color: var(--white);
+    }
+
+    /* ── LAYOUT ── */
+    .page-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 5vw 8rem;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR NAV ── */
+    .sidebar {
+      position: sticky; top: 100px;
+    }
+    .sidebar-title {
+      font-size: .65rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;
+    }
+    .sidebar-title::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .sidebar-nav li a {
+      display: flex; align-items: center; gap: .8rem;
+      padding: .75rem 0;
+      font-size: .76rem; letter-spacing: .1em;
+      color: var(--white-d); text-decoration: none;
+      border-bottom: 1px solid rgba(196,137,45,.07);
+      transition: color .2s, padding-left .2s;
+    }
+    .sidebar-nav li a::before {
+      content: ''; width: 0; height: 1px; background: var(--gold);
+      transition: width .25s;
+      flex-shrink: 0;
+    }
+    .sidebar-nav li a:hover { color: var(--gold); padding-left: .4rem; }
+    .sidebar-nav li a:hover::before { width: 16px; }
+    .sidebar-nav li a.active { color: var(--gold); padding-left: .4rem; }
+    .sidebar-nav li a.active::before { width: 16px; }
+    .sidebar-nav li:last-child a { border-bottom: none; }
+
+    .sidebar-contact {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(196,137,45,.15);
+      background: rgba(196,137,45,.03);
+    }
+    .sidebar-contact p {
+      font-size: .78rem; line-height: 1.8; color: var(--white-d); margin-bottom: 1rem;
+    }
+    .sidebar-contact a {
+      display: block; font-size: .72rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--gold); text-decoration: none;
+      transition: opacity .2s;
+    }
+    .sidebar-contact a:hover { opacity: .7; }
+
+    /* ── CONTENT ── */
+    .content { }
+    .content-section {
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(196,137,45,.08);
+      margin-bottom: 4rem;
+    }
+    .content-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300;
+      color: rgba(196,137,45,.12); line-height: 1;
+      margin-bottom: -.5rem;
+    }
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 400; color: var(--white); line-height: 1.2;
+      margin-bottom: 1.5rem; padding-top: .3rem;
+    }
+    .section-heading em { color: var(--gold); font-style: italic; }
+
+    .prose p {
+      font-size: .88rem; line-height: 2.1; color: var(--white-d);
+      margin-bottom: 1.3rem;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose p strong { color: var(--white); font-weight: 500; }
+    .prose a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(196,137,45,.3); transition: border-color .2s; }
+    .prose a:hover { border-color: var(--gold); }
+
+    /* Data table */
+    .data-table {
+      width: 100%; border-collapse: collapse;
+      margin: 2rem 0;
+    }
+    .data-table th {
+      font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+      padding: .8rem 1.2rem; text-align: left;
+      border-bottom: 1px solid rgba(196,137,45,.25);
+      background: rgba(196,137,45,.04);
+    }
+    .data-table td {
+      font-size: .83rem; line-height: 1.7; color: var(--white-d);
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid rgba(196,137,45,.06);
+      vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(196,137,45,.02); }
+
+    /* Rights grid */
+    .rights-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(196,137,45,.1); margin: 2rem 0;
+    }
+    .right-item {
+      background: var(--navy);
+      padding: 1.5rem 1.8rem;
+      transition: background .3s;
+    }
+    .right-item:hover { background: var(--navy-m); }
+    .right-icon {
+      width: 36px; height: 36px; color: var(--gold); margin-bottom: 1rem;
+    }
+    .right-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.3; stroke-linecap: round; }
+    .right-title {
+      font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--white); margin-bottom: .5rem;
+    }
+    .right-desc { font-size: .8rem; line-height: 1.75; color: var(--white-d); }
+
+    /* Highlight box */
+    .highlight-box {
+      border-left: 2px solid var(--gold);
+      padding: 1.2rem 1.6rem;
+      background: rgba(196,137,45,.04);
+      margin: 1.5rem 0;
+    }
+    .highlight-box p {
+      font-size: .86rem; line-height: 1.9; color: var(--white-d);
+      margin: 0 !important;
+    }
+    .highlight-box p strong { color: var(--gold) !important; }
+
+    /* List */
+    .content-list {
+      list-style: none; display: flex; flex-direction: column; gap: .8rem;
+      margin: 1.2rem 0;
+    }
+    .content-list li {
+      display: flex; align-items: flex-start; gap: .9rem;
+      font-size: .86rem; line-height: 1.8; color: var(--white-d);
+    }
+    .content-list li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: .6rem;
+    }
+    .content-list li strong { color: var(--white); font-weight: 500; }
+
+    /* Contact block */
+    .contact-block {
+      background: var(--navy-m);
+      border: 1px solid rgba(196,137,45,.15);
+      padding: 2.5rem;
+      position: relative; margin-top: 2rem;
+    }
+    .contact-block::before {
+      content: ''; position: absolute;
+      top: -1px; left: 2rem; right: 2rem; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .contact-block-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; color: var(--white); margin-bottom: 1rem;
+    }
+    .contact-block-items { display: flex; flex-direction: column; gap: .8rem; }
+    .contact-block-item {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: .84rem; color: var(--white-d);
+    }
+    .contact-block-item a { color: var(--gold); text-decoration: none; }
+    .contact-block-item a:hover { text-decoration: underline; }
+    .contact-block-item svg { width: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; flex-shrink: 0; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-d);
+      border-top: 1px solid rgba(196,137,45,.1);
+      padding: 3rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo img { max-height: 38px; }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--white-d); text-decoration: none; transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,.25); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .page-layout { grid-template-columns: 200px 1fr; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      nav { height: 68px; padding: 0 5vw; }
+      .page-layout { grid-template-columns: 1fr; padding: 3rem 5vw 6rem; }
+      .sidebar { position: static; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-badge { display: none; }
+      .data-table { font-size: .78rem; }
+      .data-table th, .data-table td { padding: .7rem .8rem; }
+    }
+    @media (min-width: 769px) {
+      body, body * { cursor: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Início</a>
+    <a href="index.html#services" onclick="closeMobile()">Serviços</a>
+    <a href="index.html#differentials" onclick="closeMobile()">Diferenciais</a>
+    <a href="index.html#contact" onclick="closeMobile()">Contato</a>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo-schell-quadrado.png" alt="Schell Refrigeração" />
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Sobre</a></li>
+      <li><a href="index.html#services">Serviços</a></li>
+      <li><a href="index.html#differentials">Diferenciais</a></li>
+      <li><a href="index.html#contact">Contato</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Solicitar Orçamento</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Início</a>
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <span style="color:var(--white);">Política de Privacidade</span>
+        </nav>
+        <span class="hero-tag">Transparência e Conformidade · LGPD</span>
+        <h1 class="hero-title">Política de<br/><em>Privacidade.</em></h1>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Última atualização: Janeiro de 2026
+          </div>
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Em conformidade com a LGPD
+          </div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-label">Lei</span>
+        <div class="hero-badge-val">LGPD<br/><small style="font-size:.7rem;color:var(--white-d);font-family:'Montserrat',sans-serif;">Nº 13.709/2018</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN LAYOUT -->
+  <div class="page-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-title">Seções</div>
+      <ul class="sidebar-nav" id="sidebarNav">
+        <li><a href="#s1">1. Quem Somos</a></li>
+        <li><a href="#s2">2. Dados Coletados</a></li>
+        <li><a href="#s3">3. Como Usamos</a></li>
+        <li><a href="#s4">4. Base Legal</a></li>
+        <li><a href="#s5">5. Compartilhamento</a></li>
+        <li><a href="#s6">6. Armazenamento</a></li>
+        <li><a href="#s7">7. Seus Direitos</a></li>
+        <li><a href="#s8">8. Cookies</a></li>
+        <li><a href="#s9">9. Menores</a></li>
+        <li><a href="#s10">10. Alterações</a></li>
+        <li><a href="#s11">11. Contato</a></li>
+      </ul>
+
+      <div class="sidebar-contact">
+        <p>Dúvidas sobre seus dados? Fale com nosso responsável.</p>
+        <a href="mailto:schell_scervices@outlook.com">schell_scervices@outlook.com</a>
+        <a href="tel:+5548988340861" style="margin-top:.5rem;">(48) 98834-0861</a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- INTRO -->
+      <div class="content-section reveal" id="s-intro">
+        <div class="highlight-box">
+          <p>A <strong>Schell Refrigeração</strong> respeita sua privacidade e está comprometida com a proteção dos seus dados pessoais. Esta Política descreve como coletamos, usamos, armazenamos e protegemos suas informações, em total conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018)</strong>.</p>
+        </div>
+      </div>
+
+      <!-- 1. QUEM SOMOS -->
+      <div class="content-section reveal" id="s1">
+        <div class="section-num">01</div>
+        <h2 class="section-heading">Quem Somos — o <em>Controlador</em> dos seus dados</h2>
+        <div class="prose">
+          <p>O controlador dos seus dados pessoais é:</p>
+        </div>
+        <div class="data-table" style="margin-top:1rem;">
+          <table style="width:100%; border-collapse:collapse;">
+            <tr>
+              <td class="data-table" style="padding:.9rem 1.2rem; border-bottom:1px solid rgba(196,137,45,.08); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:500; width:40%;">Razão Social</td>
+              <td style="padding:.9rem 1.2rem; border-bottom:1px solid rgba(196,137,45,.08); font-size:.85rem; color:var(--white-d);">Schell Refrigeração</td>
+            </tr>
+            <tr>
+              <td style="padding:.9rem 1.2rem; border-bottom:1px solid rgba(196,137,45,.08); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:500;">Localização</td>
+              <td style="padding:.9rem 1.2rem; border-bottom:1px solid rgba(196,137,45,.08); font-size:.85rem; color:var(--white-d);">Criciúma, Santa Catarina — Brasil</td>
+            </tr>
+            <tr>
+              <td style="padding:.9rem 1.2rem; border-bottom:1px solid rgba(196,137,45,.08); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:500;">E-mail</td>
+              <td style="padding:.9rem 1.2rem; border-bottom:1px solid rgba(196,137,45,.08); font-size:.85rem; color:var(--white-d);"><a href="mailto:schell_scervices@outlook.com" style="color:var(--gold);">schell_scervices@outlook.com</a></td>
+            </tr>
+            <tr>
+              <td style="padding:.9rem 1.2rem; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:500;">Telefone</td>
+              <td style="padding:.9rem 1.2rem; font-size:.85rem; color:var(--white-d);"><a href="tel:+5548988340861" style="color:var(--gold);">(48) 98834-0861</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2. DADOS COLETADOS -->
+      <div class="content-section reveal" id="s2">
+        <div class="section-num">02</div>
+        <h2 class="section-heading">Quais <em>dados</em> coletamos</h2>
+        <div class="prose">
+          <p>Coletamos apenas os dados necessários para prestar nossos serviços e manter contato com você. Os dados são fornecidos diretamente por você ao:</p>
+        </div>
+        <ul class="content-list">
+          <li>Preencher o formulário de contato ou orçamento no nosso site</li>
+          <li>Entrar em contato pelo WhatsApp, e-mail ou telefone</li>
+          <li>Fechar um contrato de serviço de refrigeração</li>
+          <li>Navegar pelo nosso site (dados de navegação automáticos)</li>
+        </ul>
+
+        <table class="data-table" style="margin-top:2rem;">
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Dados Coletados</th>
+              <th>Finalidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--white);">Identificação</strong></td>
+              <td>Nome completo</td>
+              <td>Identificar o titular do contato</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--white);">Contato</strong></td>
+              <td>Telefone, e-mail, WhatsApp</td>
+              <td>Responder orçamentos e prestar suporte</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--white);">Localização</strong></td>
+              <td>Cidade, endereço do imóvel</td>
+              <td>Agendar visitas técnicas e calcular deslocamento</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--white);">Contratual</strong></td>
+              <td>CPF/CNPJ, dados de pagamento</td>
+              <td>Emissão de nota fiscal e gestão do contrato</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--white);">Navegação</strong></td>
+              <td>IP, navegador, páginas acessadas</td>
+              <td>Melhorar a experiência do site e segurança</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 3. COMO USAMOS -->
+      <div class="content-section reveal" id="s3">
+        <div class="section-num">03</div>
+        <h2 class="section-heading">Como <em>usamos</em> seus dados</h2>
+        <div class="prose">
+          <p>Seus dados são utilizados exclusivamente para as finalidades descritas abaixo. Não fazemos uso de dados para fins não relacionados aos nossos serviços de refrigeração.</p>
+        </div>
+        <ul class="content-list">
+          <li><strong>Responder orçamentos e consultas</strong> — entrar em contato após o preenchimento do formulário ou mensagem no WhatsApp.</li>
+          <li><strong>Agendar visitas técnicas</strong> — coordenar o deslocamento da equipe ao seu endereço.</li>
+          <li><strong>Execução de contratos</strong> — prestação dos serviços de instalação, manutenção ou projeto.</li>
+          <li><strong>Obrigações fiscais e legais</strong> — emissão de notas fiscais e cumprimento de exigências tributárias.</li>
+          <li><strong>Manutenção preventiva</strong> — agendamento de visitas periódicas para clientes com contrato ativo.</li>
+          <li><strong>Melhoria do site</strong> — análise de acesso para aprimorar a experiência de navegação.</li>
+        </ul>
+        <div class="highlight-box" style="margin-top:1.5rem;">
+          <p><strong>Não vendemos seus dados.</strong> Nunca comercializamos, alugamos ou cedemos suas informações pessoais a terceiros para fins de marketing.</p>
+        </div>
+      </div>
+
+      <!-- 4. BASE LEGAL -->
+      <div class="content-section reveal" id="s4">
+        <div class="section-num">04</div>
+        <h2 class="section-heading">Base <em>legal</em> do tratamento</h2>
+        <div class="prose">
+          <p>Todo tratamento de dados pessoais realizado pela Schell Refrigeração possui fundamento nas hipóteses da LGPD. As principais bases legais que utilizamos são:</p>
+        </div>
+        <table class="data-table" style="margin-top:1.5rem;">
+          <thead>
+            <tr>
+              <th>Base Legal (LGPD)</th>
+              <th>Quando se aplica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--white);">Consentimento</strong> — Art. 7º, I</td>
+              <td>Ao preencher o formulário de contato e aceitar o envio de informações.</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--white);">Execução de contrato</strong> — Art. 7º, V</td>
+              <td>Para prestação dos serviços contratados de refrigeração.</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--white);">Obrigação legal</strong> — Art. 7º, II</td>
+              <td>Para emissão de nota fiscal e cumprimento de obrigações tributárias.</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--white);">Legítimo interesse</strong> — Art. 7º, IX</td>
+              <td>Para análise de navegação e melhoria de segurança do site.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 5. COMPARTILHAMENTO -->
+      <div class="content-section reveal" id="s5">
+        <div class="section-num">05</div>
+        <h2 class="section-heading"><em>Compartilhamento</em> de dados</h2>
+        <div class="prose">
+          <p>Não compartilhamos seus dados com terceiros, salvo nas situações abaixo, sempre com o mínimo necessário:</p>
+        </div>
+        <ul class="content-list">
+          <li><strong>Escritório de contabilidade</strong> — para fins de emissão de nota fiscal e obrigações fiscais, mediante contrato de confidencialidade.</li>
+          <li><strong>Fornecedores de software</strong> — ferramentas como WhatsApp Business e e-mail (Microsoft Outlook), para gerenciar comunicações.</li>
+          <li><strong>Autoridades públicas</strong> — quando exigido por lei, decisão judicial ou determinação de autoridade competente.</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Todos os terceiros com quem eventualmente compartilhamos dados estão sujeitos a obrigações de confidencialidade e também devem cumprir a LGPD.</p>
+        </div>
+      </div>
+
+      <!-- 6. ARMAZENAMENTO -->
+      <div class="content-section reveal" id="s6">
+        <div class="section-num">06</div>
+        <h2 class="section-heading">Armazenamento e <em>segurança</em></h2>
+        <div class="prose">
+          <p>Seus dados são armazenados em ambiente seguro, com controle de acesso restrito aos responsáveis pela operação da Schell Refrigeração.</p>
+          <p><strong>Prazo de retenção:</strong> mantemos seus dados enquanto houver relação comercial ativa ou pelo prazo exigido pela legislação aplicável (em geral, 5 anos para dados fiscais, conforme o Código Tributário Nacional). Após esse período, os dados são excluídos de forma segura.</p>
+          <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda, alteração ou divulgação indevida, incluindo:</p>
+        </div>
+        <ul class="content-list">
+          <li>Acesso restrito por senha e autenticação</li>
+          <li>Comunicações por canais criptografados (HTTPS, e-mail com TLS)</li>
+          <li>Controle de acesso baseado em função (somente quem precisa, acessa)</li>
+          <li>Revisão periódica dos dados armazenados</li>
+        </ul>
+      </div>
+
+      <!-- 7. SEUS DIREITOS -->
+      <div class="content-section reveal" id="s7">
+        <div class="section-num">07</div>
+        <h2 class="section-heading">Seus <em>direitos</em> como titular</h2>
+        <div class="prose">
+          <p>A LGPD garante a você uma série de direitos em relação aos seus dados pessoais. Você pode exercê-los a qualquer momento entrando em contato conosco:</p>
+        </div>
+        <div class="rights-grid">
+          <div class="right-item">
+            <div class="right-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            <div class="right-title">Acesso</div>
+            <p class="right-desc">Solicitar confirmação e acesso aos dados pessoais que possuímos sobre você.</p>
+          </div>
+          <div class="right-item">
+            <div class="right-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+            <div class="right-title">Correção</div>
+            <p class="right-desc">Solicitar a correção de dados incompletos, inexatos ou desatualizados.</p>
+          </div>
+          <div class="right-item">
+            <div class="right-icon"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
+            <div class="right-title">Exclusão</div>
+            <p class="right-desc">Solicitar a exclusão dos dados tratados com base no seu consentimento, salvo obrigações legais.</p>
+          </div>
+          <div class="right-item">
+            <div class="right-icon"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+            <div class="right-title">Portabilidade</div>
+            <p class="right-desc">Solicitar a portabilidade dos seus dados a outro fornecedor, quando tecnicamente viável.</p>
+          </div>
+          <div class="right-item">
+            <div class="right-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="right-title">Oposição</div>
+            <p class="right-desc">Opor-se ao tratamento de dados realizado com base em legítimo interesse.</p>
+          </div>
+          <div class="right-item">
+            <div class="right-icon"><svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
+            <div class="right-title">Informação</div>
+            <p class="right-desc">Obter informações sobre as entidades públicas e privadas com as quais seus dados foram compartilhados.</p>
+          </div>
+          <div class="right-item">
+            <div class="right-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div class="right-title">Revogação</div>
+            <p class="right-desc">Retirar o consentimento a qualquer momento, sem prejuízo dos tratamentos já realizados.</p>
+          </div>
+          <div class="right-item">
+            <div class="right-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="right-title">Reclamação</div>
+            <p class="right-desc">Peticionar à Autoridade Nacional de Proteção de Dados (ANPD) caso entenda que seus direitos foram violados.</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:1rem;">
+          <p>Para exercer qualquer um desses direitos, entre em contato pelo e-mail <strong>schell_scervices@outlook.com</strong>. Responderemos em até <strong>15 dias úteis</strong>, conforme previsto na LGPD.</p>
+        </div>
+      </div>
+
+      <!-- 8. COOKIES -->
+      <div class="content-section reveal" id="s8">
+        <div class="section-num">08</div>
+        <h2 class="section-heading">Cookies e <em>rastreamento</em></h2>
+        <div class="prose">
+          <p>Nosso site pode utilizar cookies — pequenos arquivos de texto armazenados no seu navegador — para melhorar a experiência de navegação. Não utilizamos cookies para fins publicitários ou rastreamento comportamental de terceiros.</p>
+        </div>
+        <table class="data-table" style="margin-top:1.5rem;">
+          <thead>
+            <tr>
+              <th>Tipo de Cookie</th>
+              <th>Finalidade</th>
+              <th>Duração</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--white);">Essenciais</strong></td>
+              <td>Funcionamento básico do site (navegação, formulários)</td>
+              <td>Sessão</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--white);">Analíticos</strong></td>
+              <td>Contagem de visitantes e páginas mais acessadas (Google Analytics, se ativo)</td>
+              <td>Até 2 anos</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="prose" style="margin-top:1rem;">
+          <p>Você pode bloquear ou deletar cookies nas configurações do seu navegador. Isso pode afetar algumas funcionalidades do site.</p>
+        </div>
+      </div>
+
+      <!-- 9. MENORES -->
+      <div class="content-section reveal" id="s9">
+        <div class="section-num">09</div>
+        <h2 class="section-heading">Dados de <em>menores</em></h2>
+        <div class="prose">
+          <p>Nossos serviços são direcionados exclusivamente a pessoas maiores de 18 anos (pessoas físicas) e a empresas. Não coletamos intencionalmente dados pessoais de menores de idade.</p>
+          <p>Caso tomemos conhecimento de que dados de um menor foram coletados sem o consentimento dos responsáveis legais, procederemos com a exclusão imediata dessas informações.</p>
+        </div>
+      </div>
+
+      <!-- 10. ALTERAÇÕES -->
+      <div class="content-section reveal" id="s10">
+        <div class="section-num">10</div>
+        <h2 class="section-heading">Alterações nesta <em>política</em></h2>
+        <div class="prose">
+          <p>Esta Política de Privacidade pode ser atualizada periodicamente para refletir mudanças nos nossos serviços, práticas de dados ou na legislação vigente.</p>
+          <p>Sempre que houver alterações relevantes, atualizaremos a data de revisão no topo desta página. Recomendamos que você a revise periodicamente. O uso contínuo do nosso site ou serviços após as alterações implica na aceitação da versão atualizada.</p>
+        </div>
+        <div class="highlight-box">
+          <p><strong>Versão atual:</strong> Janeiro de 2026 &nbsp;·&nbsp; <strong>Próxima revisão prevista:</strong> Janeiro de 2027</p>
+        </div>
+      </div>
+
+      <!-- 11. CONTATO -->
+      <div class="content-section reveal" id="s11">
+        <div class="section-num">11</div>
+        <h2 class="section-heading">Entre em <em>contato</em></h2>
+        <div class="prose">
+          <p>Para exercer seus direitos como titular, tirar dúvidas sobre esta Política ou relatar qualquer problema relacionado ao tratamento dos seus dados, entre em contato com o nosso responsável pelo tratamento de dados (DPO):</p>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-title">Israel Schell — Responsável pelos Dados</div>
+          <div class="contact-block-items">
+            <div class="contact-block-item">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:schell_scervices@outlook.com">schell_scervices@outlook.com</a>
+            </div>
+            <div class="contact-block-item">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+5548988340861">(48) 98834-0861</a>
+            </div>
+            <div class="contact-block-item">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Criciúma, Santa Catarina — Brasil
+            </div>
+            <div class="contact-block-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Respondemos em até 15 dias úteis
+            </div>
+          </div>
+        </div>
+        <div class="prose" style="margin-top:2rem;">
+          <p>Se não ficar satisfeito com nossa resposta, você pode entrar em contato com a <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong> pelo site <a href="https://www.gov.br/anpd" target="_blank" rel="noopener">www.gov.br/anpd</a>.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <a href="index.html">
+        <img src="logo-schell-quadrado.png" alt="Schell Refrigeração" />
+      </a>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Início</a>
+      <a href="index.html#services">Serviços</a>
+      <a href="index.html#contact">Contato</a>
+      <a href="mailto:schell_scervices@outlook.com">schell_scervices@outlook.com</a>
+    </div>
+    <p class="footer-copy">© 2026 Schell Refrigeração · LGPD</p>
+  </footer>
+
+  <script>
+    // ── CURSOR ──
+    const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx=0, my=0, rx=0, ry=0;
+    if (!isTouchDevice() && cursor) {
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+      });
+      (function animRing() {
+        rx += (mx-rx)*.12; ry += (my-ry)*.12;
+        ring.style.left = rx+'px'; ring.style.top = ry+'px';
+        requestAnimationFrame(animRing);
+      })();
+    }
+
+    // ── MOBILE MENU ──
+    function toggleMobile() {
+      const menu = document.getElementById('mobileMenu');
+      const ham  = document.getElementById('hamburger');
+      const open = menu.classList.toggle('open');
+      ham.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── REVEAL ──
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ── SIDEBAR ACTIVE ON SCROLL ──
+    const sections = document.querySelectorAll('.content-section[id]');
+    const navLinks = document.querySelectorAll('#sidebarNav a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    sections.forEach(s => sectionObserver.observe(s));
+  </script>
+</body>
+</html>
