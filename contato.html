@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Contato | Schell Refrigeração — Criciúma e Região</title>
+  <meta name="description" content="Entre em contato com a Schell Refrigeração. Orçamento gratuito para câmaras frias, equipamentos comerciais, climatização e manutenção em Criciúma e região sul de SC." />
+  <link rel="canonical" href="https://www.schellrefrigeracao.com.br/contato" />
+  <link rel="icon" type="image/png" href="logo-schell-quadrado.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #172340; --navy-d: #0f1829; --navy-m: #1e2e52;
+      --gold: #c4892d; --gold-l: #d9a44e; --gold-d: #9e6e20;
+      --white: #f4f0eb; --white-d: #c8c0b4;
+      --glass: rgba(23,35,64,0.72);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy-d); color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+
+    /* CURSOR */
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s, background .2s; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold-l); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .25s, height .25s; opacity: .6; }
+    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 16px; height: 16px; background: var(--gold-l); }
+    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 54px; height: 54px; border-color: var(--gold); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 80px; background: var(--glass); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(196,137,45,.18); }
+    .logo img { max-height: 50px; width: auto; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--white-d); text-decoration: none; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; position: relative; transition: color .25s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .nav-links a:hover { color: var(--gold-l); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { padding: .6rem 1.6rem; border: 1px solid var(--gold); color: var(--gold); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; transition: background .25s, color .25s; }
+    .nav-cta:hover { background: var(--gold); color: var(--navy-d); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 26px; height: 1px; background: var(--gold); transition: .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu { position: fixed; inset: 0; background: var(--navy-d); z-index: 99; display: none; flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform .45s cubic-bezier(.77,0,.18,1); padding: 6rem 8vw 4rem; }
+    .mobile-menu.open { transform: translateX(0); display: flex; }
+    .mobile-menu a { font-size: 2rem; letter-spacing: .12em; color: var(--white); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-weight: 300; padding: 1rem 0; width: 100%; border-bottom: 1px solid rgba(196,137,45,.1); display: flex; align-items: center; justify-content: space-between; opacity: 0; transform: translateX(30px); transition: opacity .4s, transform .4s, color .2s; }
+    .mobile-menu.open a { opacity: 1; transform: translateX(0); }
+    .mobile-menu.open a:nth-child(1) { transition-delay: .1s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: .17s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: .24s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: .31s; }
+    .mobile-menu a::after { content: '→'; color: var(--gold); font-size: 1.2rem; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* HERO */
+    #hero { min-height: 52vh; display: flex; align-items: flex-end; padding: 140px 5vw 5rem; position: relative; overflow: hidden; border-bottom: 1px solid rgba(196,137,45,.1); }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 60% 70% at 90% 20%, rgba(196,137,45,.07) 0%, transparent 55%), linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 60%, var(--navy-d) 100%); }
+    .hero-grid { position: absolute; inset: 0; z-index: 0; opacity: .03; background-image: linear-gradient(rgba(196,137,45,1) 1px, transparent 1px), linear-gradient(90deg, rgba(196,137,45,1) 1px, transparent 1px); background-size: 80px 80px; }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: end; width: 100%; }
+    .breadcrumb { display: flex; align-items: center; gap: .6rem; font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--white-d); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb svg { width: 10px; stroke: var(--white-d); fill: none; stroke-width: 2; }
+    .hero-tag { font-size: .65rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+    .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 5.5rem); font-weight: 300; line-height: 1.0; color: var(--white); opacity: 0; animation: fadeUp .9s .3s forwards; }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-desc { font-size: .9rem; line-height: 2; color: var(--white-d); max-width: 420px; opacity: 0; animation: fadeUp .9s .5s forwards; }
+    .hero-channels { display: flex; flex-direction: column; gap: 1px; background: rgba(196,137,45,.12); opacity: 0; animation: fadeIn 1s .6s forwards; }
+    .channel-item { background: var(--navy-m); padding: 1.4rem 2rem; display: flex; align-items: center; gap: 1.2rem; text-decoration: none; transition: background .25s; }
+    .channel-item:hover { background: var(--navy); }
+    .channel-icon { width: 40px; height: 40px; border: 1px solid rgba(196,137,45,.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold); }
+    .channel-icon svg { width: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .channel-icon.wa-icon { background: rgba(37,211,102,.08); border-color: rgba(37,211,102,.25); color: #25D366; }
+    .channel-icon.wa-icon svg { fill: currentColor; stroke: none; }
+    .channel-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .2rem; }
+    .channel-val { font-size: .88rem; color: var(--white); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* MAIN */
+    .page-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+
+    /* FORM SIDE */
+    .form-side { padding: 6rem 5vw; border-right: 1px solid rgba(196,137,45,.08); }
+    .side-label { font-size: .65rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+    .side-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+    .side-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 2.5rem; }
+    .side-title em { color: var(--gold); font-style: italic; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: .45rem; }
+    .form-group label { font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+    .form-group input, .form-group select, .form-group textarea { background: rgba(255,255,255,.04); border: 1px solid rgba(196,137,45,.18); color: var(--white); padding: .9rem 1.1rem; font-family: 'Montserrat', sans-serif; font-size: .84rem; outline: none; transition: border-color .25s, background .25s; resize: none; width: 100%; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,.22); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); background: rgba(196,137,45,.04); }
+    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c4892d' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; color: var(--white); }
+    .form-group select option { background: var(--navy-d); color: var(--white); }
+
+    .send-options { display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; padding: .8rem 0; border-top: 1px solid rgba(196,137,45,.1); border-bottom: 1px solid rgba(196,137,45,.1); }
+    .send-options-label { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--white-d); }
+    .send-opt-btn { display: flex; align-items: center; gap: .5rem; padding: .5rem 1.1rem; border: 1px solid rgba(196,137,45,.22); background: none; color: var(--white-d); font-family: 'Montserrat', sans-serif; font-size: .7rem; letter-spacing: .1em; cursor: none; transition: border-color .2s, color .2s, background .2s; }
+    .send-opt-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(196,137,45,.05); }
+    .send-opt-btn svg { width: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .send-opt-btn.wa svg { fill: currentColor; stroke: none; }
+
+    .form-submit { padding: 1rem 2.8rem; background: var(--gold); color: var(--navy-d); border: none; font-family: 'Montserrat', sans-serif; font-size: .75rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; cursor: none; transition: background .25s; align-self: flex-start; }
+    .form-submit:hover { background: var(--gold-l); }
+    #formStatus { font-size: .82rem; margin-top: .5rem; }
+
+    /* INFO SIDE */
+    .info-side { padding: 6rem 5vw; background: var(--navy); }
+    .info-block { margin-bottom: 3.5rem; }
+    .info-block:last-child { margin-bottom: 0; }
+    .info-block-title { font-size: .65rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; }
+    .info-block-title::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+
+    .detail-item { display: flex; align-items: flex-start; gap: 1.1rem; margin-bottom: 1.4rem; }
+    .detail-icon { width: 42px; height: 42px; border: 1px solid rgba(196,137,45,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold); }
+    .detail-icon svg { width: 18px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+    .detail-label { font-size: .63rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .25rem; }
+    .detail-val { font-size: .86rem; line-height: 1.7; color: var(--white-d); }
+    .detail-val a { color: var(--white-d); text-decoration: none; transition: color .2s; }
+    .detail-val a:hover { color: var(--gold); }
+
+    .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(196,137,45,.1); }
+    .hours-item { background: var(--navy-d); padding: 1.1rem 1.4rem; }
+    .hours-day { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--white-d); margin-bottom: .3rem; }
+    .hours-time { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); }
+    .hours-item.closed .hours-time { color: rgba(196,137,45,.35); font-size: 1rem; }
+
+    .area-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .area-tag { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .8rem; border: 1px solid rgba(196,137,45,.2); color: var(--white-d); }
+
+    /* MAP PLACEHOLDER */
+    .map-placeholder { width: 100%; height: 200px; background: var(--navy-d); border: 1px solid rgba(196,137,45,.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem; margin-top: 1.5rem; position: relative; overflow: hidden; }
+    .map-placeholder::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(196,137,45,.04) 0%, transparent 70%); }
+    .map-pin { width: 40px; height: 40px; color: var(--gold); }
+    .map-pin svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.3; }
+    .map-label { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--white-d); position: relative; z-index: 1; }
+    .map-cta { font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(196,137,45,.3); transition: border-color .2s; position: relative; z-index: 1; }
+    .map-cta:hover { border-color: var(--gold); }
+
+    /* FAQ */
+    #faq { padding: 6rem 5vw; background: var(--navy-d); border-top: 1px solid rgba(196,137,45,.08); }
+    .faq-header { max-width: 550px; margin-bottom: 3.5rem; }
+    .section-label { font-size: .65rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+    .section-label::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); vertical-align: middle; margin-right: 12px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.1; color: var(--white); }
+    .section-title em { color: var(--gold); font-style: italic; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(196,137,45,.1); }
+    .faq-card { background: var(--navy); padding: 2rem; }
+    .faq-q { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--white); margin-bottom: .7rem; line-height: 1.3; }
+    .faq-a { font-size: .82rem; line-height: 1.85; color: var(--white-d); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+
+    /* FOOTER */
+    footer { background: var(--navy-d); border-top: 1px solid rgba(196,137,45,.1); padding: 3rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo img { max-height: 38px; }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--white-d); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,.25); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .page-body { grid-template-columns: 1fr; }
+      .form-side { border-right: none; border-bottom: 1px solid rgba(196,137,45,.08); }
+      .faq-grid { grid-template-columns: 1fr; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-channels { display: none; }
+    }
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      nav { height: 68px; padding: 0 5vw; }
+      .form-row { grid-template-columns: 1fr; }
+      .hours-grid { grid-template-columns: 1fr; }
+      .send-opt-btn { cursor: pointer; }
+      .form-submit { width: 100%; text-align: center; cursor: pointer; }
+    }
+    @media (min-width: 769px) { body, body * { cursor: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Início</a>
+    <a href="index.html#services" onclick="closeMobile()">Serviços</a>
+    <a href="sobre.html" onclick="closeMobile()">Sobre</a>
+    <a href="contato.html" onclick="closeMobile()">Contato</a>
+  </div>
+
+  <nav>
+    <div class="logo"><a href="index.html"><img src="logo-schell-quadrado.png" alt="Schell Refrigeração" /></a></div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Sobre</a></li>
+      <li><a href="index.html#services">Serviços</a></li>
+      <li><a href="index.html#differentials">Diferenciais</a></li>
+      <li><a href="index.html#contact">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/5548988340861" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Início</a>
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <span style="color:var(--white);">Contato</span>
+        </nav>
+        <span class="hero-tag">Atendimento Especializado · Criciúma e Região Sul de SC</span>
+        <h1 class="hero-title">Fale com a<br/><em>Schell.</em></h1>
+        <p class="hero-desc" style="margin-top:1.5rem;">Orçamento gratuito, visita técnica sem compromisso e resposta rápida. Escolha o canal que preferir — respondemos em até 2 horas em horário comercial.</p>
+      </div>
+      <div class="hero-channels">
+        <a class="channel-item" href="https://wa.me/5548988340861?text=Olá%2C%20gostaria%20de%20um%20orçamento!" target="_blank" rel="noopener">
+          <div class="channel-icon wa-icon"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <div><span class="channel-label">WhatsApp · Mais rápido</span><div class="channel-val">(48) 98834-0861</div></div>
+        </a>
+        <a class="channel-item" href="mailto:schell_scervices@outlook.com">
+          <div class="channel-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><span class="channel-label">E-mail</span><div class="channel-val">schell_scervices@outlook.com</div></div>
+        </a>
+        <a class="channel-item" href="tel:+5548988340861">
+          <div class="channel-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><span class="channel-label">Telefone</span><div class="channel-val">(48) 98834-0861</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <div class="page-body">
+    <!-- FORM -->
+    <div class="form-side">
+      <span class="side-label reveal">Formulário de Contato</span>
+      <h2 class="side-title reveal reveal-delay-1">Envie sua<br/><em>mensagem.</em></h2>
+      <form class="contact-form reveal reveal-delay-2" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Nome *</label>
+            <input type="text" id="name" placeholder="Seu nome completo" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefone *</label>
+            <input type="tel" id="phone" placeholder="(48) 9 0000-0000" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="city">Cidade</label>
+          <input type="text" id="city" placeholder="Sua cidade" />
+        </div>
+        <div class="form-group">
+          <label for="service">Serviço de Interesse</label>
+          <select id="service">
+            <option value="" disabled selected>Selecione um serviço</option>
+            <option>Câmaras Frias</option>
+            <option>Equipamentos Comerciais</option>
+            <option>Manutenção de Refrigeração</option>
+            <option>Climatização Residencial</option>
+            <option>Projetos Técnicos</option>
+            <option>Refrigeração Industrial</option>
+            <option>Emergência 24h</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensagem *</label>
+          <textarea id="message" rows="5" placeholder="Descreva sua necessidade ou dúvida..." required></textarea>
+        </div>
+        <div class="send-options">
+          <span class="send-options-label">Enviar via:</span>
+          <button type="button" class="send-opt-btn active" id="optEmail" onclick="setSendMode('email')">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> E-mail
+          </button>
+          <button type="button" class="send-opt-btn wa" id="optWa" onclick="setSendMode('whatsapp')">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp
+          </button>
+        </div>
+        <button type="submit" class="form-submit">Enviar Mensagem</button>
+        <div id="formStatus"></div>
+      </form>
+    </div>
+
+    <!-- INFO -->
+    <div class="info-side">
+      <div class="info-block reveal">
+        <div class="info-block-title">Canais de Atendimento</div>
+        <div class="detail-item">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><span class="detail-label">Telefone · WhatsApp · Emergências 24h</span><div class="detail-val"><a href="tel:+5548988340861">(48) 98834-0861</a></div></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><span class="detail-label">E-mail</span><div class="detail-val"><a href="mailto:schell_scervices@outlook.com">schell_scervices@outlook.com</a></div></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div><span class="detail-label">Instagram</span><div class="detail-val"><a href="https://instagram.com/schellrefrigeracao" target="_blank" rel="noopener">@schellrefrigeracao</a></div></div>
+        </div>
+      </div>
+
+      <div class="info-block reveal reveal-delay-1">
+        <div class="info-block-title">Horários de Atendimento</div>
+        <div class="hours-grid">
+          <div class="hours-item"><div class="hours-day">Segunda – Sexta</div><div class="hours-time">08:00 – 18:00</div></div>
+          <div class="hours-item"><div class="hours-day">Sábado</div><div class="hours-time">08:00 – 13:00</div></div>
+          <div class="hours-item" style="grid-column:1/-1; background:rgba(196,137,45,.04); border-top:1px solid rgba(196,137,45,.1); padding:1rem 1.4rem;">
+            <div class="hours-day">Emergências</div>
+            <div class="hours-time" style="font-size:1rem; color:var(--gold-l);">24 horas · 7 dias por semana</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block reveal reveal-delay-2">
+        <div class="info-block-title">Área de Atendimento</div>
+        <div class="detail-item" style="margin-bottom:.8rem;">
+          <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><span class="detail-label">Sede</span><div class="detail-val">Criciúma, Santa Catarina</div></div>
+        </div>
+        <div class="area-tags">
+          <span class="area-tag">Criciúma</span><span class="area-tag">Içara</span><span class="area-tag">Forquilhinha</span>
+          <span class="area-tag">Urussanga</span><span class="area-tag">Siderópolis</span><span class="area-tag">Nova Veneza</span>
+          <span class="area-tag">Araranguá</span><span class="area-tag">Sombrio</span><span class="area-tag">Tubarão</span>
+          <span class="area-tag">Torres (RS)</span><span class="area-tag">Bal. Rincão</span><span class="area-tag">+ região</span>
+        </div>
+        <div class="map-placeholder">
+          <div class="map-pin"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <span class="map-label">Criciúma · SC · Brasil</span>
+          <a class="map-cta" href="https://maps.google.com/?q=Criciuma+SC" target="_blank" rel="noopener">Abrir no Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="faq-header">
+      <span class="section-label reveal">Dúvidas Rápidas</span>
+      <h2 class="section-title reveal reveal-delay-1">Antes de entrar<br/>em <em>contato.</em></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-card reveal"><div class="faq-q">Vocês fazem visita técnica gratuita?</div><p class="faq-a">Sim. Realizamos visita técnica gratuita e sem compromisso para orçamentos de instalação de câmaras frias, ar condicionado e equipamentos comerciais em Criciúma e toda a região.</p></div>
+      <div class="faq-card reveal reveal-delay-1"><div class="faq-q">Em quanto tempo recebo o orçamento?</div><p class="faq-a">Após a visita técnica, entregamos o orçamento detalhado em até 24 horas. Para casos simples, o orçamento pode ser enviado no mesmo dia.</p></div>
+      <div class="faq-card reveal"><div class="faq-q">Atendem finais de semana?</div><p class="faq-a">Para emergências, atendemos 24 horas, 7 dias por semana. Para visitas agendadas, atendemos aos sábados das 08h às 13h.</p></div>
+      <div class="faq-card reveal reveal-delay-1"><div class="faq-q">Como funciona o suporte emergencial?</div><p class="faq-a">Basta ligar ou mandar mensagem no WhatsApp (48) 98834-0861. Para emergências de refrigeração como câmara fria parada ou compressor com defeito, priorizamos o atendimento imediato.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo"><a href="index.html"><img src="logo-schell-quadrado.png" alt="Schell Refrigeração" /></a></div>
+    <div class="footer-links">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="index.html#services">Serviços</a>
+      <a href="politica-de-privacidade.html">Privacidade</a>
+      <a href="termos.html">Termos</a>
+    </div>
+    <p class="footer-copy">© 2026 Schell Refrigeração · Criciúma, SC</p>
+  </footer>
+
+  <script>
+    const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    if (!isTouchDevice() && cursor) {
+      document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+      (function animRing(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
+    }
+    function toggleMobile() {
+      const menu=document.getElementById('mobileMenu'); const ham=document.getElementById('hamburger');
+      const open=menu.classList.toggle('open'); ham.classList.toggle('open',open); document.body.style.overflow=open?'hidden':'';
+    }
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburger').classList.remove('open'); document.body.style.overflow='';
+    }
+    const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    let sendMode='email';
+    function setSendMode(m){ sendMode=m; document.getElementById('optEmail').classList.toggle('active',m==='email'); document.getElementById('optWa').classList.toggle('active',m==='whatsapp'); }
+
+    document.getElementById('contactForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const btn=this.querySelector('.form-submit'); const orig=btn.textContent;
+      const nome=document.getElementById('name').value.trim();
+      const phone=document.getElementById('phone').value.trim();
+      const emailVal=document.getElementById('email').value.trim();
+      const city=document.getElementById('city').value.trim();
+      const servico=document.getElementById('service').value||'Não especificado';
+      const mensagem=document.getElementById('message').value.trim();
+      const status=document.getElementById('formStatus');
+      if(!nome||!phone||!emailVal||!mensagem){ status.innerHTML='<span style="color:#e74c3c;">❌ Preencha todos os campos obrigatórios.</span>'; return; }
+      btn.textContent='Enviando...'; btn.disabled=true;
+      if(sendMode==='email'){
+        const sub=encodeURIComponent(`Contato Schell Refrigeração – ${servico}`);
+        const body=encodeURIComponent(`Nome: ${nome}\nTelefone: ${phone}\nEmail: ${emailVal}\nCidade: ${city}\nServiço: ${servico}\n\nMensagem:\n${mensagem}`);
+        window.location.href=`mailto:schell_scervices@outlook.com?subject=${sub}&body=${body}`;
+      } else {
+        window.open(`https://wa.me/5548988340861?text=${encodeURIComponent(`Olá! Sou ${nome} de ${city||'não informado'}.\nTelefone: ${phone}\nEmail: ${emailVal}\nServiço: ${servico}\n\n${mensagem}`)}`, '_blank');
+      }
+      this.reset(); status.innerHTML='<span style="color:#2d8a5e;">✓ Redirecionando para envio...</span>';
+      setTimeout(()=>{ btn.textContent=orig; btn.disabled=false; status.innerHTML=''; },5000);
+    });
+  </script>
+</body>
+</html>
