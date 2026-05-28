@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Sobre Nós | Schell Refrigeração — Israel Schell</title>
+  <meta name="description" content="Conheça a história da Schell Refrigeração e de Israel Schell, técnico especialista em refrigeração comercial e climatização com mais de 15 anos de experiência em Criciúma, SC." />
+  <link rel="canonical" href="https://www.schellrefrigeracao.com.br/sobre" />
+  <link rel="icon" type="image/png" href="logo-schell-quadrado.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #172340; --navy-d: #0f1829; --navy-m: #1e2e52;
+      --gold: #c4892d; --gold-l: #d9a44e; --gold-d: #9e6e20;
+      --white: #f4f0eb; --white-d: #c8c0b4;
+      --glass: rgba(23,35,64,0.72);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy-d); color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s, background .2s; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold-l); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .25s, height .25s; opacity: .6; }
+    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 16px; height: 16px; background: var(--gold-l); }
+    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 54px; height: 54px; border-color: var(--gold); }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 80px; background: var(--glass); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(196,137,45,.18); }
+    .logo img { max-height: 50px; width: auto; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--white-d); text-decoration: none; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; position: relative; transition: color .25s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .nav-links a:hover { color: var(--gold-l); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { padding: .6rem 1.6rem; border: 1px solid var(--gold); color: var(--gold); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; transition: background .25s, color .25s; }
+    .nav-cta:hover { background: var(--gold); color: var(--navy-d); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 26px; height: 1px; background: var(--gold); transition: .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu { position: fixed; inset: 0; background: var(--navy-d); z-index: 99; display: none; flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform .45s cubic-bezier(.77,0,.18,1); padding: 6rem 8vw 4rem; }
+    .mobile-menu.open { transform: translateX(0); display: flex; }
+    .mobile-menu a { font-size: 2rem; letter-spacing: .12em; color: var(--white); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-weight: 300; padding: 1rem 0; width: 100%; border-bottom: 1px solid rgba(196,137,45,.1); display: flex; align-items: center; justify-content: space-between; opacity: 0; transform: translateX(30px); transition: opacity .4s, transform .4s, color .2s; }
+    .mobile-menu.open a { opacity: 1; transform: translateX(0); }
+    .mobile-menu.open a:nth-child(1){transition-delay:.1s;} .mobile-menu.open a:nth-child(2){transition-delay:.17s;} .mobile-menu.open a:nth-child(3){transition-delay:.24s;} .mobile-menu.open a:nth-child(4){transition-delay:.31s;}
+    .mobile-menu a::after { content: '→'; color: var(--gold); font-size: 1.2rem; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+    .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 5vw 6rem; position: relative; z-index: 1; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 55% 80% at 30% 60%, rgba(196,137,45,.07) 0%, transparent 60%), linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 55%, var(--navy-d) 100%); }
+    .hero-grid { position: absolute; inset: 0; z-index: 0; opacity: .03; background-image: linear-gradient(rgba(196,137,45,1) 1px, transparent 1px), linear-gradient(90deg, rgba(196,137,45,1) 1px, transparent 1px); background-size: 80px 80px; }
+    .breadcrumb { display: flex; align-items: center; gap: .6rem; font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--white-d); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb svg { width: 10px; stroke: var(--white-d); fill: none; stroke-width: 2; }
+    .hero-tag { font-size: .65rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; opacity:0; animation: fadeUp .7s .3s forwards; }
+    .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5.5vw, 6rem); font-weight: 300; line-height: 1.0; color: var(--white); opacity:0; animation: fadeUp .9s .45s forwards; }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-sub { font-size: .9rem; line-height: 2; color: var(--white-d); max-width: 460px; margin-top: 2rem; opacity:0; animation: fadeUp .9s .6s forwards; }
+    .hero-stat-row { display: flex; gap: 3rem; margin-top: 3.5rem; opacity:0; animation: fadeUp .9s .75s forwards; }
+    .hero-stat-val { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; }
+    .hero-stat-label { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--white-d); margin-top: .3rem; }
+
+    /* PORTRAIT SIDE */
+    .hero-right { position: relative; background: var(--navy-m); overflow: hidden; }
+    .hero-right-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, var(--navy-d) 100%), linear-gradient(135deg, var(--navy-m), var(--navy)); }
+    .portrait-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
+    .portrait-icon { width: 100px; height: 100px; border: 1px solid rgba(196,137,45,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(196,137,45,.3); }
+    .portrait-icon svg { width: 50px; stroke: currentColor; fill: none; stroke-width: 1; }
+    .portrait-hint { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(196,137,45,.3); text-align: center; max-width: 180px; line-height: 1.8; }
+    /* If you have a photo, replace the placeholder with: */
+    /* .hero-right img { width:100%; height:100%; object-fit:cover; object-position:top; } */
+    .hero-right-deco { position: absolute; bottom: 3rem; left: 3rem; right: 3rem; }
+    .hero-right-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--white); opacity:0; animation: fadeUp .9s .8s forwards; }
+    .hero-right-role { font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-top: .4rem; opacity:0; animation: fadeUp .9s .95s forwards; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);} }
+
+    /* SECTIONS */
+    .section-label { font-size: .65rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+    .section-label::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); vertical-align: middle; margin-right: 12px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.5rem); font-weight: 300; line-height: 1.1; color: var(--white); }
+    .section-title em { color: var(--gold); font-style: italic; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s, transform .7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1{transition-delay:.12s;} .reveal-delay-2{transition-delay:.24s;} .reveal-delay-3{transition-delay:.36s;} .reveal-delay-4{transition-delay:.48s;}
+
+    /* STORY */
+    #story { padding: 8rem 5vw; }
+    .story-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
+    .story-text p { font-size: .9rem; line-height: 2.1; color: var(--white-d); margin-bottom: 1.5rem; }
+    .story-text p strong { color: var(--gold); font-weight: 500; }
+    .story-text p:last-child { margin-bottom: 0; }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--gold), rgba(196,137,45,.1)); }
+    .tl-item { position: relative; padding-bottom: 2.5rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot { position: absolute; left: -2.4rem; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--navy-d); border: 2px solid var(--gold); }
+    .tl-item:first-child .tl-dot { background: var(--gold); }
+    .tl-year { font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem; }
+    .tl-event { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--white); margin-bottom: .4rem; }
+    .tl-desc { font-size: .82rem; line-height: 1.8; color: var(--white-d); }
+
+    /* VALUES */
+    #values { padding: 8rem 5vw; background: var(--navy); }
+    .values-header { max-width: 600px; margin-bottom: 5rem; }
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(196,137,45,.1); }
+    .value-card { background: var(--navy-d); padding: 3rem 2rem; border-top: 2px solid transparent; transition: border-color .3s, background .3s; }
+    .value-card:hover { border-color: var(--gold); background: var(--navy-m); }
+    .value-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: rgba(196,137,45,.1); line-height: 1; margin-bottom: -.5rem; }
+    .value-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--white); margin-bottom: .7rem; padding-top: .3rem; }
+    .value-desc { font-size: .82rem; line-height: 1.85; color: var(--white-d); }
+
+    /* EXPERTISE */
+    #expertise { padding: 8rem 5vw; }
+    .expertise-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .expertise-card { background: var(--navy-m); border: 1px solid rgba(196,137,45,.12); padding: 3.5rem; position: relative; }
+    .expertise-card::before { content: ''; position: absolute; top: -1px; left: 2.5rem; right: 2.5rem; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+    .skill-bar-group { margin-bottom: 1.5rem; }
+    .skill-bar-group:last-child { margin-bottom: 0; }
+    .skill-label { display: flex; justify-content: space-between; align-items: center; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--white-d); margin-bottom: .5rem; }
+    .skill-label span { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: .9rem; }
+    .skill-track { height: 2px; background: rgba(196,137,45,.1); position: relative; }
+    .skill-fill { height: 100%; background: linear-gradient(to right, var(--gold-d), var(--gold)); transform-origin: left; transform: scaleX(0); transition: transform 1.2s cubic-bezier(.25,.46,.45,.94); }
+    .skill-fill.animated { transform: scaleX(1); }
+    .expertise-text p { font-size: .9rem; line-height: 2; color: var(--white-d); margin-bottom: 1.5rem; }
+    .expertise-text p strong { color: var(--gold); font-weight: 500; }
+    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .cert-item { padding: 1rem 1.2rem; border-left: 2px solid rgba(196,137,45,.3); background: rgba(196,137,45,.03); }
+    .cert-title { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+    .cert-desc { font-size: .78rem; color: var(--white-d); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    #testimonials { padding: 8rem 5vw; background: var(--navy); }
+    .test-header { max-width: 500px; margin-bottom: 4rem; }
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(196,137,45,.1); }
+    .test-card { background: var(--navy-d); padding: 2.5rem; position: relative; }
+    .test-card::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 6rem; line-height: .7; color: rgba(196,137,45,.08); position: absolute; top: 1rem; right: 1.5rem; }
+    .test-stars { display: flex; gap: .25rem; margin-bottom: 1.2rem; }
+    .test-stars span { color: var(--gold); font-size: .9rem; }
+    .test-text { font-size: .84rem; line-height: 1.9; color: var(--white-d); font-style: italic; margin-bottom: 1.5rem; }
+    .test-author { display: flex; align-items: center; gap: .9rem; }
+    .test-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--navy-m); border: 1px solid rgba(196,137,45,.25); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); flex-shrink: 0; }
+    .test-name { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white); }
+    .test-role { font-size: .72rem; color: var(--white-d); margin-top: .15rem; }
+
+    /* CTA */
+    #cta { padding: 8rem 5vw; text-align: center; position: relative; overflow: hidden; border-top: 1px solid rgba(196,137,45,.1); }
+    #cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(196,137,45,.05) 0%, transparent 65%); }
+    #cta > * { position: relative; z-index: 1; }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 300; color: var(--white); line-height: 1.1; }
+    .cta-title em { color: var(--gold); font-style: italic; }
+    .cta-sub { font-size: .9rem; line-height: 2; color: var(--white-d); max-width: 460px; margin: 1.5rem auto 0; }
+    .cta-actions { display: flex; gap: 1.2rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
+    .btn-primary { padding: .9rem 2.4rem; background: var(--gold); color: var(--navy-d); font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; font-weight: 600; transition: background .25s, transform .2s; display: inline-block; }
+    .btn-primary:hover { background: var(--gold-l); transform: translateY(-2px); }
+    .btn-ghost { padding: .9rem 2.4rem; border: 1px solid rgba(196,137,45,.35); color: var(--white-d); font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; transition: border-color .25s, color .25s, transform .2s; display: inline-block; }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    footer { background: var(--navy-d); border-top: 1px solid rgba(196,137,45,.1); padding: 3rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo img { max-height: 38px; }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--white-d); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,.25); }
+
+    @media (max-width: 1024px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 400px; }
+      .story-layout, .expertise-layout { grid-template-columns: 1fr; gap: 4rem; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      nav { height: 68px; padding: 0 5vw; }
+      .values-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .hero-stat-row { gap: 2rem; }
+      .cta-actions { flex-direction: column; align-items: center; }
+    }
+    @media (min-width: 769px) { body, body * { cursor: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Início</a>
+    <a href="index.html#services" onclick="closeMobile()">Serviços</a>
+    <a href="sobre.html" onclick="closeMobile()">Sobre</a>
+    <a href="contato.html" onclick="closeMobile()">Contato</a>
+  </div>
+
+  <nav>
+    <div class="logo"><a href="index.html"><img src="logo-schell-quadrado.png" alt="Schell Refrigeração" /></a></div>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Serviços</a></li>
+      <li><a href="sobre.html" style="color:var(--gold);">Sobre</a></li>
+      <li><a href="index.html#differentials">Diferenciais</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+    <a href="contato.html" class="nav-cta">Solicitar Orçamento</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-left">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Início</a>
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="color:var(--white);">Sobre</span>
+      </nav>
+      <span class="hero-tag">Desde 2009 · Israel Schell · Criciúma, SC</span>
+      <h1 class="hero-title">A história por<br/>trás da <em>Schell.</em></h1>
+      <p class="hero-sub">Mais de 15 anos de experiência em refrigeração comercial e climatização. Uma trajetória construída com técnica real, sem improvisos e com atendimento direto ao especialista.</p>
+      <div class="hero-stat-row">
+        <div><div class="hero-stat-val">15+</div><div class="hero-stat-label">Anos de Exp.</div></div>
+        <div style="width:1px;background:rgba(196,137,45,.2);align-self:stretch;"></div>
+        <div><div class="hero-stat-val">800+</div><div class="hero-stat-label">Projetos</div></div>
+        <div style="width:1px;background:rgba(196,137,45,.2);align-self:stretch;"></div>
+        <div><div class="hero-stat-val">98%</div><div class="hero-stat-label">Satisfação</div></div>
+        <div style="width:1px;background:rgba(196,137,45,.2);align-self:stretch;"></div>
+        <div><div class="hero-stat-val">24h</div><div class="hero-stat-label">Suporte</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-bg"></div>
+      <!--
+        FOTO DO ISRAEL:
+        Substitua o bloco abaixo por:
+        <img src="israel-schell.jpg" alt="Israel Schell — Schell Refrigeração" style="width:100%;height:100%;object-fit:cover;object-position:top center;" />
+      -->
+      <div class="portrait-placeholder">
+        <div class="portrait-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <p class="portrait-hint">Insira aqui a foto de Israel Schell<br/>(israel-schell.jpg)</p>
+      </div>
+      <div class="hero-right-deco">
+        <div class="hero-right-name">Israel Schell</div>
+        <div class="hero-right-role">Fundador & Especialista em Refrigeração</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story">
+    <div class="story-layout">
+      <div class="story-text">
+        <span class="section-label reveal">Nossa História</span>
+        <h2 class="section-title reveal reveal-delay-1">Técnica real.<br/><em>Sem improvisos.</em></h2>
+        <div style="margin-top:2rem;">
+          <p class="reveal reveal-delay-2">A <strong>Schell Refrigeração</strong> foi fundada em 2019 por Israel Schell, técnico com mais de 15 anos de experiência acumulada em empresas do setor de refrigeração comercial no sul de Santa Catarina. Depois de anos aprendendo na prática — de câmaras frias industriais a sistemas de climatização residencial de alto padrão — Israel decidiu abrir seu próprio negócio com uma proposta clara: <strong>atendimento direto com o especialista, sem intermediários.</strong></p>
+          <p class="reveal reveal-delay-3">O que começou com atendimentos em Criciúma cresceu naturalmente para toda a região sul catarinense: Içara, Forquilhinha, Urussanga, Araranguá, Sombrio, Torres, Tubarão e municípios vizinhos. A reputação construída boca a boca tornou-se o maior ativo da empresa.</p>
+          <p class="reveal reveal-delay-4">Hoje, a <strong>Schell Refrigeração</strong> é referência técnica na região para restaurantes, supermercados, açougues, padarias, indústrias alimentícias e residências de alto padrão. O diferencial continua o mesmo: <strong>Israel atende pessoalmente,</strong> diagnóstico real, solução real.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <span class="section-label" style="margin-bottom:2rem; display:block;">Linha do Tempo</span>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2009</div>
+            <div class="tl-event">Início na área de refrigeração</div>
+            <p class="tl-desc">Israel Schell começa sua carreira como técnico em refrigeração comercial, aprendendo na prática com instalações de câmaras frias e equipamentos industriais.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2013</div>
+            <div class="tl-event">Especialização em climatização</div>
+            <p class="tl-desc">Amplia o conhecimento para sistemas de ar condicionado comercial e residencial de alto padrão, trabalhando com marcas como Daikin, Mitsubishi e Carrier.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2017</div>
+            <div class="tl-event">Primeiros projetos industriais</div>
+            <p class="tl-desc">Participa de projetos de câmaras frias industriais para frigoríficos e indústrias alimentícias, consolidando expertise em cálculo de carga térmica e dimensionamento.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2019</div>
+            <div class="tl-event">Fundação da Schell Refrigeração</div>
+            <p class="tl-desc">Com 10 anos de experiência, Israel funda sua própria empresa em Criciúma, com foco em atendimento personalizado e qualidade de execução.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">Hoje</div>
+            <div class="tl-event">Referência no sul de SC</div>
+            <p class="tl-desc">Mais de 800 projetos entregues, atendimento em toda a região sul catarinense e norte do RS, com suporte emergencial 24 horas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section id="values">
+    <div class="values-header">
+      <span class="section-label reveal">Nossos Valores</span>
+      <h2 class="section-title reveal reveal-delay-1">O que nos<br/>guia em cada <em>projeto.</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <div class="value-title">Técnica</div>
+        <p class="value-desc">Cada diagnóstico é baseado em conhecimento real. Não improvisamos e não terceirizamos soluções que não dominamos.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-num">02</div>
+        <div class="value-title">Honestidade</div>
+        <p class="value-desc">Dizemos o que o cliente precisa ouvir, não o que ele quer. Orçamento claro, sem surpresas, sem cobranças desnecessárias.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-num">03</div>
+        <div class="value-title">Compromisso</div>
+        <p class="value-desc">Prazo combinado é prazo cumprido. Quando existe um imprevisto, avisamos antes — não depois.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-num">04</div>
+        <div class="value-title">Excelência</div>
+        <p class="value-desc">Usamos apenas equipamentos de primeira linha e aplicamos os melhores processos de instalação e manutenção do mercado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise">
+    <div class="expertise-layout">
+      <div class="reveal">
+        <div class="expertise-card">
+          <span class="section-label" style="margin-bottom:1.5rem; display:block;">Áreas de Domínio</span>
+          <div class="skill-bar-group">
+            <div class="skill-label">Câmaras Frias & Refrigeração Industrial <span>98%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:98%"></div></div>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-label">Climatização Comercial & Residencial <span>95%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-label">Manutenção Preventiva & Corretiva <span>98%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:98%"></div></div>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-label">Projetos Técnicos & Carga Térmica <span>92%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-label">Refrigeração para Indústria Alimentícia <span>90%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="expertise-text">
+        <span class="section-label reveal">Formação & Certificações</span>
+        <h2 class="section-title reveal reveal-delay-1">Conhecimento que<br/>vira <em>resultado.</em></h2>
+        <p class="reveal reveal-delay-2" style="margin-top:1.5rem;">Israel Schell combina formação técnica sólida com mais de 15 anos de experiência prática. Cada treinamento foi escolhido para trazer resultado real nos projetos dos clientes.</p>
+        <div class="cert-grid reveal reveal-delay-3">
+          <div class="cert-item"><div class="cert-title">Técnico em Refrigeração</div><div class="cert-desc">Formação técnica completa em sistemas de refrigeração e climatização.</div></div>
+          <div class="cert-item"><div class="cert-title">NR-10 · Segurança Elétrica</div><div class="cert-desc">Habilitado para trabalhos com instalações elétricas de equipamentos.</div></div>
+          <div class="cert-item"><div class="cert-title">Fluidos Refrigerantes</div><div class="cert-desc">Certificado para manuseio de gases refrigerantes conforme PROCEL.</div></div>
+          <div class="cert-item"><div class="cert-title">Treinamentos de Marca</div><div class="cert-desc">Certificações Daikin, Carrier e Copeland para instalação e manutenção.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="test-header">
+      <span class="section-label reveal">Depoimentos</span>
+      <h2 class="section-title reveal reveal-delay-1">Quem já trabalhou<br/>com a <em>Schell.</em></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="test-text">"Excelente profissional! Realizou o conserto da minha máquina de lavar e a instalação de ar-condicionado com muita técnica e capricho. O serviço ficou impecável. Com certeza voltarei a contratar e recomendo a todos!"</p>
+        <div class="test-author"><div class="test-avatar">G</div><div><div class="test-name">Gerusa Schell dos Santos</div><div class="test-role">Cliente</div></div></div>
+      </div>
+      <div class="test-card reveal reveal-delay-1">
+        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="test-text">"Ótimo profissional, correto e sempre prestativo. Anos como seu cliente, nunca nos deixou na mão, sempre com a melhor solução."</p>
+        <div class="test-author"><div class="test-avatar">E</div><div><div class="test-name">Evanio Pereira Trajano</div><div class="test-role">Cliente</div></div></div>
+      </div>
+      <div class="test-card reveal reveal-delay-2">
+        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="test-text">"Todas as vezes que tive problema e procurei pelos serviços da Schell, eles resolveram e fizeram sempre além do que eu esperava. São profissionais e muito solícitos."</p>
+        <div class="test-author"><div class="test-avatar">J</div><div><div class="test-name">John Sebastian Lopes</div><div class="test-role">Cliente</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <h2 class="cta-title reveal">Pronto para trabalhar<br/>com quem <em>entende.</em></h2>
+    <p class="cta-sub reveal reveal-delay-1">Visita técnica gratuita, orçamento sem compromisso e atendimento direto com Israel Schell.</p>
+    <div class="cta-actions reveal reveal-delay-2">
+      <a href="contato.html" class="btn-primary">Solicitar Orçamento</a>
+      <a href="https://wa.me/5548988340861" class="btn-ghost" target="_blank" rel="noopener">WhatsApp Direto</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo"><a href="index.html"><img src="logo-schell-quadrado.png" alt="Schell Refrigeração" /></a></div>
+    <div class="footer-links">
+      <a href="index.html">Início</a>
+      <a href="index.html#services">Serviços</a>
+      <a href="contato.html">Contato</a>
+      <a href="politica-de-privacidade.html">Privacidade</a>
+      <a href="termos.html">Termos</a>
+    </div>
+    <p class="footer-copy">© 2026 Schell Refrigeração · Criciúma, SC</p>
+  </footer>
+
+  <script>
+    const isTouchDevice=()=>window.matchMedia('(pointer: coarse)').matches;
+    const cursor=document.getElementById('cursor'); const ring=document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    if(!isTouchDevice()&&cursor){
+      document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+      (function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+    }
+    function toggleMobile(){const menu=document.getElementById('mobileMenu');const ham=document.getElementById('hamburger');const open=menu.classList.toggle('open');ham.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+    function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+    const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    // Animate skill bars when visible
+    const skillObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-fill').forEach(f=>f.classList.add('animated'));skillObserver.unobserve(e.target);}}),{threshold:.3});
+    document.querySelectorAll('.expertise-card').forEach(el=>skillObserver.observe(el));
+  </script>
+</body>
+</html>
