@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Termos de Uso | Schell Refrigeração</title>
+  <meta name="description" content="Termos de Uso da Schell Refrigeração. Condições gerais de prestação de serviços de refrigeração comercial, climatização e manutenção em Criciúma e região sul de SC." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://www.schellrefrigeracao.com.br/termos" />
+  <link rel="icon" type="image/png" href="logo-schell-quadrado.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #172340; --navy-d: #0f1829; --navy-m: #1e2e52;
+      --gold: #c4892d; --gold-l: #d9a44e; --gold-d: #9e6e20;
+      --white: #f4f0eb; --white-d: #c8c0b4;
+      --glass: rgba(23,35,64,0.72);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy-d); color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s, background .2s; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold-l); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .25s, height .25s; opacity: .6; }
+    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 16px; height: 16px; background: var(--gold-l); }
+    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 54px; height: 54px; border-color: var(--gold); }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 80px; background: var(--glass); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(196,137,45,.18); }
+    .logo img { max-height: 50px; width: auto; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--white-d); text-decoration: none; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; position: relative; transition: color .25s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .nav-links a:hover { color: var(--gold-l); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { padding: .6rem 1.6rem; border: 1px solid var(--gold); color: var(--gold); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; transition: background .25s, color .25s; }
+    .nav-cta:hover { background: var(--gold); color: var(--navy-d); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 26px; height: 1px; background: var(--gold); transition: .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu { position: fixed; inset: 0; background: var(--navy-d); z-index: 99; display: none; flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform .45s cubic-bezier(.77,0,.18,1); padding: 6rem 8vw 4rem; }
+    .mobile-menu.open { transform: translateX(0); display: flex; }
+    .mobile-menu a { font-size: 2rem; letter-spacing: .12em; color: var(--white); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-weight: 300; padding: 1rem 0; width: 100%; border-bottom: 1px solid rgba(196,137,45,.1); display: flex; align-items: center; justify-content: space-between; opacity: 0; transform: translateX(30px); transition: opacity .4s, transform .4s, color .2s; }
+    .mobile-menu.open a { opacity: 1; transform: translateX(0); }
+    .mobile-menu.open a:nth-child(1){transition-delay:.1s;} .mobile-menu.open a:nth-child(2){transition-delay:.17s;} .mobile-menu.open a:nth-child(3){transition-delay:.24s;} .mobile-menu.open a:nth-child(4){transition-delay:.31s;}
+    .mobile-menu a::after { content: '→'; color: var(--gold); font-size: 1.2rem; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* HERO */
+    #hero { padding: 140px 5vw 5rem; position: relative; overflow: hidden; border-bottom: 1px solid rgba(196,137,45,.1); }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 50% 70% at 85% 30%, rgba(196,137,45,.06) 0%, transparent 55%), linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 60%, var(--navy-d) 100%); }
+    .hero-grid { position: absolute; inset: 0; z-index: 0; opacity: .03; background-image: linear-gradient(rgba(196,137,45,1) 1px, transparent 1px), linear-gradient(90deg, rgba(196,137,45,1) 1px, transparent 1px); background-size: 80px 80px; }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 4rem; }
+    .breadcrumb { display: flex; align-items: center; gap: .6rem; font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--white-d); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb svg { width: 10px; stroke: var(--white-d); fill: none; stroke-width: 2; }
+    .hero-tag { font-size: .65rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+    .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 5vw, 5rem); font-weight: 300; line-height: 1.05; color: var(--white); }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-meta { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+    .hero-meta-item { display: flex; align-items: center; gap: .6rem; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white-d); }
+    .hero-meta-item svg { width: 14px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .hero-badge { padding: 1.2rem 1.8rem; border: 1px solid rgba(196,137,45,.2); background: rgba(196,137,45,.04); text-align: center; flex-shrink: 0; align-self: flex-end; }
+    .hero-badge-label { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .4rem; }
+    .hero-badge-val { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--white); line-height: 1.4; }
+
+    /* LAYOUT */
+    .page-layout { display: grid; grid-template-columns: 260px 1fr; gap: 5rem; max-width: 1200px; margin: 0 auto; padding: 5rem 5vw 8rem; align-items: start; }
+
+    /* SIDEBAR */
+    .sidebar { position: sticky; top: 100px; }
+    .sidebar-title { font-size: .65rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+    .sidebar-title::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .sidebar-nav li a { display: flex; align-items: center; gap: .8rem; padding: .75rem 0; font-size: .76rem; letter-spacing: .1em; color: var(--white-d); text-decoration: none; border-bottom: 1px solid rgba(196,137,45,.07); transition: color .2s, padding-left .2s; }
+    .sidebar-nav li a::before { content: ''; width: 0; height: 1px; background: var(--gold); transition: width .25s; flex-shrink: 0; }
+    .sidebar-nav li a:hover, .sidebar-nav li a.active { color: var(--gold); padding-left: .4rem; }
+    .sidebar-nav li a:hover::before, .sidebar-nav li a.active::before { width: 16px; }
+    .sidebar-nav li:last-child a { border-bottom: none; }
+    .sidebar-note { margin-top: 2.5rem; padding: 1.5rem; border: 1px solid rgba(196,137,45,.15); background: rgba(196,137,45,.03); }
+    .sidebar-note p { font-size: .76rem; line-height: 1.8; color: var(--white-d); }
+    .sidebar-note a { color: var(--gold); text-decoration: none; }
+    .sidebar-note a:hover { text-decoration: underline; }
+
+    /* CONTENT */
+    .content-section { padding-bottom: 4rem; border-bottom: 1px solid rgba(196,137,45,.08); margin-bottom: 4rem; }
+    .content-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .section-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: rgba(196,137,45,.12); line-height: 1; margin-bottom: -.5rem; }
+    .section-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 400; color: var(--white); line-height: 1.2; margin-bottom: 1.5rem; padding-top: .3rem; }
+    .section-heading em { color: var(--gold); font-style: italic; }
+    .prose p { font-size: .88rem; line-height: 2.1; color: var(--white-d); margin-bottom: 1.3rem; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose p strong { color: var(--white); font-weight: 500; }
+    .prose a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(196,137,45,.3); transition: border-color .2s; }
+    .prose a:hover { border-color: var(--gold); }
+    .content-list { list-style: none; display: flex; flex-direction: column; gap: .8rem; margin: 1.2rem 0; }
+    .content-list li { display: flex; align-items: flex-start; gap: .9rem; font-size: .86rem; line-height: 1.8; color: var(--white-d); }
+    .content-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: .6rem; }
+    .content-list li strong { color: var(--white); font-weight: 500; }
+    .highlight-box { border-left: 2px solid var(--gold); padding: 1.2rem 1.6rem; background: rgba(196,137,45,.04); margin: 1.5rem 0; }
+    .highlight-box p { font-size: .86rem; line-height: 1.9; color: var(--white-d); margin: 0 !important; }
+    .highlight-box p strong { color: var(--gold) !important; }
+    .highlight-box.warning { border-color: rgba(231,76,60,.5); background: rgba(231,76,60,.04); }
+    .highlight-box.warning p strong { color: rgba(231,76,60,.8) !important; }
+
+    /* TWO-COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(196,137,45,.1); margin: 1.5rem 0; }
+    .two-col-item { background: var(--navy); padding: 1.5rem 1.8rem; transition: background .3s; }
+    .two-col-item:hover { background: var(--navy-m); }
+    .two-col-title { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+    .two-col-desc { font-size: .82rem; line-height: 1.75; color: var(--white-d); }
+
+    /* CONTACT BLOCK */
+    .contact-block { background: var(--navy-m); border: 1px solid rgba(196,137,45,.15); padding: 2.5rem; position: relative; margin-top: 2rem; }
+    .contact-block::before { content: ''; position: absolute; top: -1px; left: 2rem; right: 2rem; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+    .contact-block-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 1rem; }
+    .contact-block-items { display: flex; flex-direction: column; gap: .8rem; }
+    .contact-block-item { display: flex; align-items: center; gap: 1rem; font-size: .84rem; color: var(--white-d); }
+    .contact-block-item a { color: var(--gold); text-decoration: none; }
+    .contact-block-item a:hover { text-decoration: underline; }
+    .contact-block-item svg { width: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; flex-shrink: 0; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+
+    /* FOOTER */
+    footer { background: var(--navy-d); border-top: 1px solid rgba(196,137,45,.1); padding: 3rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo img { max-height: 38px; }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--white-d); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: .72rem; color: rgba(255,255,255,.25); }
+
+    @media (max-width: 1024px) { .page-layout { grid-template-columns: 200px 1fr; gap: 3rem; } }
+    @media (max-width: 768px) {
+      body { cursor: auto; } .cursor, .cursor-ring { display: none; }
+      .nav-links, .nav-cta { display: none; } .hamburger { display: flex; }
+      nav { height: 68px; padding: 0 5vw; }
+      .page-layout { grid-template-columns: 1fr; padding: 3rem 5vw 6rem; }
+      .sidebar { position: static; }
+      .hero-inner { grid-template-columns: 1fr; } .hero-badge { display: none; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 769px) { body, body * { cursor: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Início</a>
+    <a href="index.html#services" onclick="closeMobile()">Serviços</a>
+    <a href="sobre.html" onclick="closeMobile()">Sobre</a>
+    <a href="contato.html" onclick="closeMobile()">Contato</a>
+  </div>
+
+  <nav>
+    <div class="logo"><a href="index.html"><img src="logo-schell-quadrado.png" alt="Schell Refrigeração" /></a></div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Sobre</a></li>
+      <li><a href="index.html#services">Serviços</a></li>
+      <li><a href="index.html#differentials">Diferenciais</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+    <a href="contato.html" class="nav-cta">Solicitar Orçamento</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Início</a>
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <span style="color:var(--white);">Termos de Uso</span>
+        </nav>
+        <span class="hero-tag">Condições Gerais · Prestação de Serviços</span>
+        <h1 class="hero-title">Termos de<br/><em>Uso.</em></h1>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Última atualização: Janeiro de 2026
+          </div>
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Vigência imediata
+          </div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-label">Aplicável a</span>
+        <div class="hero-badge-val">Site &<br/>Serviços</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <div class="page-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-title">Seções</div>
+      <ul class="sidebar-nav" id="sidebarNav">
+        <li><a href="#s1">1. Aceitação</a></li>
+        <li><a href="#s2">2. Serviços Oferecidos</a></li>
+        <li><a href="#s3">3. Orçamentos e Contratos</a></li>
+        <li><a href="#s4">4. Pagamento</a></li>
+        <li><a href="#s5">5. Garantias</a></li>
+        <li><a href="#s6">6. Obrigações do Cliente</a></li>
+        <li><a href="#s7">7. Responsabilidades</a></li>
+        <li><a href="#s8">8. Uso do Site</a></li>
+        <li><a href="#s9">9. Propriedade Intelectual</a></li>
+        <li><a href="#s10">10. Cancelamentos</a></li>
+        <li><a href="#s11">11. Legislação Aplicável</a></li>
+        <li><a href="#s12">12. Contato</a></li>
+      </ul>
+      <div class="sidebar-note">
+        <p>Dúvidas sobre estes termos? Entre em contato antes de contratar qualquer serviço.</p>
+        <a href="mailto:schell_scervices@outlook.com" style="margin-top:.5rem; display:block;">schell_scervices@outlook.com</a>
+        <a href="tel:+5548988340861" style="margin-top:.4rem; display:block;">(48) 98834-0861</a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main>
+
+      <!-- INTRO -->
+      <div class="content-section reveal" id="s-intro">
+        <div class="highlight-box">
+          <p>Estes Termos de Uso regulam o acesso ao site da <strong>Schell Refrigeração</strong> e a contratação dos nossos serviços de refrigeração comercial, climatização e manutenção. Ao utilizar nosso site ou contratar nossos serviços, você concorda com as condições descritas neste documento.</p>
+        </div>
+      </div>
+
+      <!-- 1 -->
+      <div class="content-section reveal" id="s1">
+        <div class="section-num">01</div>
+        <h2 class="section-heading">Aceitação dos <em>Termos</em></h2>
+        <div class="prose">
+          <p>Ao acessar o site <strong>www.schellrefrigeracao.com.br</strong>, solicitar um orçamento, preencher o formulário de contato ou contratar qualquer serviço da Schell Refrigeração, você declara ter lido, compreendido e concordado integralmente com estes Termos de Uso.</p>
+          <p>Caso não concorde com qualquer condição aqui prevista, solicitamos que não utilize o site nem contrate nossos serviços. Dúvidas podem ser esclarecidas antes da contratação pelo e-mail <a href="mailto:schell_scervices@outlook.com">schell_scervices@outlook.com</a> ou pelo WhatsApp (48) 98834-0861.</p>
+        </div>
+        <div class="highlight-box">
+          <p>Estes Termos podem ser atualizados a qualquer momento. A versão vigente é sempre a publicada nesta página, com a data de atualização indicada no topo. O uso continuado do site após alterações implica aceitação da versão mais recente.</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="content-section reveal" id="s2">
+        <div class="section-num">02</div>
+        <h2 class="section-heading">Serviços <em>Oferecidos</em></h2>
+        <div class="prose">
+          <p>A Schell Refrigeração oferece os seguintes serviços, prestados em Criciúma e na região sul de Santa Catarina:</p>
+        </div>
+        <ul class="content-list">
+          <li><strong>Projeto e instalação de câmaras frias</strong> — resfriamento, congelamento e ultracongelamento para uso comercial e industrial.</li>
+          <li><strong>Fornecimento e instalação de equipamentos comerciais</strong> — freezers, balcões frigoríficos, refrigeradores expositores e similares.</li>
+          <li><strong>Manutenção preventiva e corretiva</strong> — de todos os tipos de equipamentos de refrigeração e climatização.</li>
+          <li><strong>Instalação de sistemas de ar condicionado</strong> — residencial e comercial, incluindo marcas como Daikin, Carrier, Mitsubishi e Gree.</li>
+          <li><strong>Projetos técnicos e consultoria</strong> — laudos, cálculos de carga térmica e especificações para fins comerciais ou industriais.</li>
+          <li><strong>Atendimento emergencial 24 horas</strong> — para equipamentos com defeito fora do horário comercial.</li>
+        </ul>
+        <div class="prose" style="margin-top:1rem;">
+          <p>A prestação de cada serviço está condicionada à <strong>avaliação técnica prévia</strong>, disponibilidade de agenda e condições de acesso ao local de execução. A Schell Refrigeração reserva-se o direito de recusar a prestação de serviços em casos em que as condições técnicas ou de segurança não sejam adequadas.</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="content-section reveal" id="s3">
+        <div class="section-num">03</div>
+        <h2 class="section-heading">Orçamentos e <em>Contratos</em></h2>
+        <div class="prose">
+          <p>A contratação de serviços da Schell Refrigeração segue as seguintes etapas:</p>
+        </div>
+        <ul class="content-list">
+          <li><strong>Visita técnica gratuita</strong> — sem custo e sem compromisso de contratação, para avaliação do local e levantamento das necessidades.</li>
+          <li><strong>Orçamento detalhado</strong> — apresentado por escrito (e-mail ou WhatsApp) com descrição dos serviços, materiais, mão de obra e prazo estimado.</li>
+          <li><strong>Aprovação</strong> — o cliente deve confirmar expressamente o orçamento por escrito antes do início de qualquer serviço.</li>
+          <li><strong>Início dos serviços</strong> — somente após aprovação formal e, quando aplicável, pagamento de entrada conforme acordado.</li>
+        </ul>
+        <div class="highlight-box">
+          <p><strong>Validade do orçamento:</strong> os orçamentos emitidos pela Schell Refrigeração têm validade de <strong>15 dias corridos</strong> a partir da data de emissão. Após esse prazo, os valores podem ser revisados em função de variações no custo de materiais e equipamentos.</p>
+        </div>
+        <div class="prose">
+          <p>Alterações no escopo dos serviços após a aprovação do orçamento devem ser solicitadas por escrito e podem implicar revisão de valor e prazo, com novo orçamento complementar a ser aprovado pelo cliente.</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="content-section reveal" id="s4">
+        <div class="section-num">04</div>
+        <h2 class="section-heading">Pagamento e <em>Condições Financeiras</em></h2>
+        <div class="prose">
+          <p>As condições de pagamento são estabelecidas individualmente em cada orçamento aprovado. As práticas gerais da Schell Refrigeração são:</p>
+        </div>
+        <div class="two-col">
+          <div class="two-col-item">
+            <div class="two-col-title">Entrada</div>
+            <div class="two-col-desc">Para projetos de maior porte (câmaras frias, instalações industriais), pode ser solicitada entrada de até 50% do valor total para aquisição de materiais.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Saldo</div>
+            <div class="two-col-desc">O valor restante é cobrado na entrega ou conforme cronograma acordado no orçamento. Manutenções avulsas são cobradas na conclusão do serviço.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Formas Aceitas</div>
+            <div class="two-col-desc">Pix, transferência bancária, dinheiro e cartão (conforme disponibilidade). Cheque não é aceito.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Nota Fiscal</div>
+            <div class="two-col-desc">Emitimos nota fiscal para todos os serviços prestados, conforme exigências da legislação fiscal vigente.</div>
+          </div>
+        </div>
+        <div class="highlight-box warning">
+          <p><strong>Atraso no pagamento:</strong> valores em atraso estão sujeitos a multa de 2% e juros de mora de 1% ao mês, além de correção monetária pelo IGPM/FGV, conforme previsto no Código Civil Brasileiro (Art. 395 e 406).</p>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="content-section reveal" id="s5">
+        <div class="section-num">05</div>
+        <h2 class="section-heading"><em>Garantias</em> dos Serviços</h2>
+        <div class="prose">
+          <p>A Schell Refrigeração oferece as seguintes garantias em seus serviços, observadas as condições de uso correto e manutenção adequada dos equipamentos:</p>
+        </div>
+        <div class="two-col">
+          <div class="two-col-item">
+            <div class="two-col-title">Mão de Obra — Instalação</div>
+            <div class="two-col-desc">12 meses a partir da data de conclusão do serviço, cobrindo defeitos de instalação e execução.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Mão de Obra — Manutenção</div>
+            <div class="two-col-desc">90 dias para serviços de manutenção corretiva, limitados ao problema especificamente diagnosticado e reparado.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Equipamentos e Peças</div>
+            <div class="two-col-desc">Garantia de fábrica conforme fabricante (geralmente 12 a 24 meses). Compressores Copeland e Danfoss possuem garantia estendida própria.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Gases Refrigerantes</div>
+            <div class="two-col-desc">A recarga de gás não possui garantia para vazamentos decorrentes de danos físicos nas tubulações ou componentes não relacionados ao serviço prestado.</div>
+          </div>
+        </div>
+        <div class="prose" style="margin-top:1rem;">
+          <p>A garantia <strong>não cobre</strong> danos causados por mau uso, falta de manutenção preventiva, intervenções de terceiros não autorizados, problemas na rede elétrica (sobretensão, falta de aterramento), desastres naturais ou qualquer situação fora do controle da Schell Refrigeração.</p>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="content-section reveal" id="s6">
+        <div class="section-num">06</div>
+        <h2 class="section-heading">Obrigações do <em>Cliente</em></h2>
+        <div class="prose">
+          <p>Para a correta prestação dos serviços e validade das garantias, o cliente se compromete a:</p>
+        </div>
+        <ul class="content-list">
+          <li><strong>Garantir acesso ao local</strong> de instalação ou manutenção nas datas e horários agendados, com antecedência mínima de 24h para reagendamentos.</li>
+          <li><strong>Fornecer informações corretas</strong> sobre o equipamento, histórico de manutenção e problemas identificados.</li>
+          <li><strong>Assegurar condições elétricas adequadas</strong> — rede elétrica compatível com a voltagem e amperagem dos equipamentos a instalar, com aterramento conforme normas da ABNT.</li>
+          <li><strong>Não realizar intervenções</strong> nos equipamentos instalados pela Schell Refrigeração sem autorização prévia, durante o período de garantia.</li>
+          <li><strong>Realizar manutenções preventivas</strong> nos intervalos recomendados para manter a garantia e eficiência dos equipamentos.</li>
+          <li><strong>Efetuar os pagamentos</strong> nos prazos acordados no orçamento aprovado.</li>
+        </ul>
+      </div>
+
+      <!-- 7 -->
+      <div class="content-section reveal" id="s7">
+        <div class="section-num">07</div>
+        <h2 class="section-heading"><em>Responsabilidades</em> e Limitações</h2>
+        <div class="prose">
+          <p>A Schell Refrigeração é responsável pela qualidade técnica dos serviços prestados, pela correta instalação dos equipamentos e pelo cumprimento dos prazos acordados.</p>
+          <p><strong>A Schell Refrigeração não se responsabiliza por:</strong></p>
+        </div>
+        <ul class="content-list">
+          <li>Perdas de produtos perecíveis decorrentes de falhas de equipamentos fora do período de garantia ou não relacionadas ao serviço prestado.</li>
+          <li>Danos causados por problemas na infraestrutura elétrica ou civil do imóvel do cliente.</li>
+          <li>Falhas decorrentes de uso inadequado dos equipamentos instalados.</li>
+          <li>Atrasos causados por indisponibilidade de peças ou componentes junto aos fabricantes e distribuidores.</li>
+          <li>Danos indiretos, lucros cessantes ou prejuízos decorrentes de paradas de equipamentos, salvo nos casos cobertos pela garantia.</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Em caso de falha durante o período de garantia, a responsabilidade da Schell Refrigeração limita-se ao <strong>reparo ou substituição do componente</strong> com defeito, sem custo adicional para o cliente, dentro das condições previstas na cláusula de Garantias.</p>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="content-section reveal" id="s8">
+        <div class="section-num">08</div>
+        <h2 class="section-heading">Uso do <em>Site</em></h2>
+        <div class="prose">
+          <p>O site da Schell Refrigeração é disponibilizado para fins informativos e de contato. Ao utilizá-lo, você concorda em:</p>
+        </div>
+        <ul class="content-list">
+          <li>Usar o site exclusivamente para fins lícitos e legítimos.</li>
+          <li>Não tentar acessar áreas restritas, sistemas ou bancos de dados do site.</li>
+          <li>Não utilizar o formulário de contato para envio de spam, conteúdo ofensivo ou solicitações fraudulentas.</li>
+          <li>Não reproduzir, copiar ou distribuir conteúdo do site sem autorização prévia e por escrito da Schell Refrigeração.</li>
+        </ul>
+        <div class="prose" style="margin-top:1rem;">
+          <p>O site pode estar indisponível eventualmente por manutenção, atualização ou problemas técnicos. A Schell Refrigeração não garante disponibilidade contínua e não se responsabiliza por perdas decorrentes de indisponibilidade temporária do site.</p>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="content-section reveal" id="s9">
+        <div class="section-num">09</div>
+        <h2 class="section-heading">Propriedade <em>Intelectual</em></h2>
+        <div class="prose">
+          <p>Todo o conteúdo do site da Schell Refrigeração — incluindo textos, logotipo, marca, layout, imagens, ícones e código-fonte — é de propriedade exclusiva da Schell Refrigeração ou de seus licenciadores e está protegido pelas leis brasileiras de direitos autorais e propriedade industrial.</p>
+          <p>É <strong>vedado</strong>, sem autorização prévia e por escrito da Schell Refrigeração:</p>
+        </div>
+        <ul class="content-list">
+          <li>Reproduzir, copiar ou distribuir qualquer conteúdo do site para fins comerciais.</li>
+          <li>Utilizar a marca "Schell Refrigeração" ou o logotipo em qualquer meio ou suporte.</li>
+          <li>Criar obras derivadas baseadas no conteúdo do site.</li>
+        </ul>
+        <div class="prose" style="margin-top:1rem;">
+          <p>A reprodução para uso pessoal e não comercial é permitida, desde que mantida a referência à Schell Refrigeração como fonte.</p>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="content-section reveal" id="s10">
+        <div class="section-num">10</div>
+        <h2 class="section-heading">Cancelamentos e <em>Desistências</em></h2>
+        <div class="prose">
+          <p>O cliente pode cancelar ou reagendar um serviço observando as seguintes condições:</p>
+        </div>
+        <div class="two-col">
+          <div class="two-col-item">
+            <div class="two-col-title">Cancelamento sem custo</div>
+            <div class="two-col-desc">Com antecedência mínima de 24 horas antes do horário agendado para visita técnica ou serviço, sem nenhuma cobrança.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Cancelamento com custo</div>
+            <div class="two-col-desc">Cancelamentos com menos de 24 horas de antecedência podem estar sujeitos à cobrança de taxa de deslocamento, conforme a distância do local de atendimento.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Serviços em andamento</div>
+            <div class="two-col-desc">O cancelamento após o início da execução implica pagamento proporcional pelos serviços já realizados e materiais adquiridos especificamente para o projeto.</div>
+          </div>
+          <div class="two-col-item">
+            <div class="two-col-title">Direito de arrependimento</div>
+            <div class="two-col-desc">Contratos firmados à distância (por telefone, WhatsApp ou e-mail) seguem o Código de Defesa do Consumidor — prazo de arrependimento de 7 dias a partir da contratação.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="content-section reveal" id="s11">
+        <div class="section-num">11</div>
+        <h2 class="section-heading">Legislação e <em>Foro</em></h2>
+        <div class="prose">
+          <p>Estes Termos de Uso são regidos pelas leis da República Federativa do Brasil, especialmente pelo:</p>
+        </div>
+        <ul class="content-list">
+          <li><strong>Código Civil Brasileiro</strong> (Lei nº 10.406/2002) — para obrigações contratuais.</li>
+          <li><strong>Código de Defesa do Consumidor</strong> (Lei nº 8.078/1990) — para relações de consumo.</li>
+          <li><strong>Lei Geral de Proteção de Dados</strong> (Lei nº 13.709/2018) — para tratamento de dados pessoais.</li>
+          <li><strong>Marco Civil da Internet</strong> (Lei nº 12.965/2014) — para uso do site.</li>
+        </ul>
+        <div class="prose" style="margin-top:1rem;">
+          <p>Para a resolução de quaisquer conflitos decorrentes destes Termos ou da prestação dos serviços, fica eleito o <strong>Foro da Comarca de Criciúma, Santa Catarina</strong>, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+        </div>
+        <div class="highlight-box">
+          <p>Antes de qualquer medida judicial, as partes se comprometem a tentar solucionar eventuais divergências de forma amigável, por meio de contato direto com a Schell Refrigeração.</p>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="content-section reveal" id="s12">
+        <div class="section-num">12</div>
+        <h2 class="section-heading">Fale <em>Conosco</em></h2>
+        <div class="prose">
+          <p>Para dúvidas, esclarecimentos ou reclamações relacionadas a estes Termos de Uso ou aos serviços prestados, entre em contato:</p>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-title">Schell Refrigeração — Atendimento</div>
+          <div class="contact-block-items">
+            <div class="contact-block-item">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:schell_scervices@outlook.com">schell_scervices@outlook.com</a>
+            </div>
+            <div class="contact-block-item">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+5548988340861">(48) 98834-0861 — WhatsApp e Telefone</a>
+            </div>
+            <div class="contact-block-item">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Criciúma, Santa Catarina — Brasil
+            </div>
+            <div class="contact-block-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Horário de atendimento: Seg–Sex 08h–18h · Sáb 08h–13h
+            </div>
+          </div>
+        </div>
+        <div class="prose" style="margin-top:2rem;">
+          <p>Consulte também nossa <a href="politica-de-privacidade.html">Política de Privacidade</a> para entender como tratamos seus dados pessoais em conformidade com a LGPD.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><a href="index.html"><img src="logo-schell-quadrado.png" alt="Schell Refrigeração" /></a></div>
+    <div class="footer-links">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="index.html#services">Serviços</a>
+      <a href="contato.html">Contato</a>
+      <a href="politica-de-privacidade.html">Privacidade</a>
+    </div>
+    <p class="footer-copy">© 2026 Schell Refrigeração · Criciúma, SC</p>
+  </footer>
+
+  <script>
+    const isTouchDevice=()=>window.matchMedia('(pointer: coarse)').matches;
+    const cursor=document.getElementById('cursor'); const ring=document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    if(!isTouchDevice()&&cursor){
+      document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+      (function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a);})();
+    }
+    function toggleMobile(){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');const o=m.classList.toggle('open');h.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';}
+    function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+    const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}}),{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    // Sidebar active
+    const sections=document.querySelectorAll('.content-section[id]');
+    const links=document.querySelectorAll('#sidebarNav a');
+    new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));}}),{rootMargin:'-30% 0px -60% 0px'}).observe||sections.forEach(s=>new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));}}),{rootMargin:'-30% 0px -60% 0px'}).observe(s));
+    const sObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){const id=e.target.getAttribute('id');links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));}}),{rootMargin:'-30% 0px -60% 0px'});
+    sections.forEach(s=>sObs.observe(s));
+  </script>
+</body>
+</html>
