@@ -186,34 +186,116 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: flex-start;
-      /* FIX: extra bottom padding so actions breathe above the strip */
-      padding: 0 5vw 7rem;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0;
       position: relative; overflow: hidden;
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(196,137,45,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 30% 50%, rgba(196,137,45,.07) 0%, transparent 55%),
         radial-gradient(ellipse 50% 70% at 10% 80%, rgba(14,22,46,.9) 0%, transparent 70%),
         linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 50%, var(--navy-d) 100%);
     }
 
-    .hero-logo {
-      position: absolute; right: 8vw; top: 50%; transform: translateY(-50%);
-      opacity: .08; z-index: 1;
-      text-align: center;
-    }
-    .hero-logo svg {
-      width: 320px;
-      height: auto;
+    /* ── HERO CONTENT (left) ── */
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 120px 5vw 6rem 5vw;
+      display: flex; flex-direction: column; align-items: flex-start;
     }
 
-    .hero-tag {
+    /* ── HERO CAROUSEL (right) ── */
+    .hero-carousel-wrap {
       position: relative; z-index: 2;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hero-carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform .8s cubic-bezier(.77,0,.18,1);
+    }
+    .hero-carousel-slide {
+      flex-shrink: 0;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-carousel-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    /* Placeholder shown when no image is set */
+    .hero-slide-placeholder {
+      width: 100%; height: 100%;
+      background: var(--navy-m);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1rem;
+      border-left: 1px solid rgba(196,137,45,.12);
+    }
+    .hero-slide-placeholder svg { width: 48px; height: 48px; stroke: rgba(196,137,45,.3); fill: none; stroke-width: 1; }
+    .hero-slide-placeholder p { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(196,137,45,.3); text-align: center; max-width: 160px; line-height: 1.8; }
+    /* Overlay gradient so slide doesn't look too harsh against text */
+    .hero-carousel-slide::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(15,24,41,.35) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    /* Gold frame accent */
+    .hero-carousel-slide::before {
+      content: '';
+      position: absolute; inset: 16px;
+      border: 1px solid rgba(196,137,45,.2);
+      z-index: 1; pointer-events: none;
+    }
+    /* Counter badge */
+    .hero-carousel-counter {
+      position: absolute; bottom: 2rem; right: 2rem; z-index: 3;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; color: rgba(196,137,45,.7);
+      letter-spacing: .1em;
+    }
+    .hero-carousel-counter span { color: var(--gold); }
+    /* Nav buttons */
+    .hero-carousel-nav {
+      position: absolute; bottom: 2rem; left: 2rem; z-index: 3;
+      display: flex; gap: .6rem;
+    }
+    .hero-carousel-btn {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(196,137,45,.35);
+      background: rgba(15,24,41,.6);
+      backdrop-filter: blur(8px);
+      color: var(--gold); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s, border-color .25s;
+    }
+    .hero-carousel-btn:hover { background: var(--gold); color: var(--navy-d); border-color: var(--gold); }
+    .hero-carousel-btn svg { width: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+    /* Dots */
+    .hero-carousel-dots {
+      position: absolute; bottom: 2.4rem; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; gap: .5rem;
+    }
+    .hero-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(196,137,45,.3);
+      border: none; cursor: pointer;
+      transition: background .3s, transform .3s;
+      padding: 0;
+    }
+    .hero-dot.active { background: var(--gold); transform: scale(1.4); }
+
+    .hero-tag {
       font-size: .68rem; letter-spacing: .35em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.8rem; margin-top: 80px;
+      color: var(--gold); margin-bottom: 1.8rem;
       opacity: 0; animation: fadeUp .8s .3s forwards;
     }
     .hero-tag::before {
@@ -221,25 +303,20 @@
       background: var(--gold); vertical-align: middle; margin-right: 14px;
     }
     .hero-title {
-      position: relative; z-index: 2;
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.2rem, 7vw, 7rem);
+      font-size: clamp(2.8rem, 5vw, 6rem);
       font-weight: 300; line-height: 1.05;
-      color: var(--white); max-width: 700px;
+      color: var(--white); max-width: 600px;
       opacity: 0; animation: fadeUp .9s .5s forwards;
     }
     .hero-title em { color: var(--gold); font-style: italic; }
     .hero-sub {
-      position: relative; z-index: 2;
       font-size: .9rem; line-height: 1.9; color: var(--white-d);
-      max-width: 500px; margin-top: 1.8rem;
+      max-width: 460px; margin-top: 1.8rem;
       opacity: 0; animation: fadeUp .9s .7s forwards;
     }
     .hero-actions {
-      position: relative; z-index: 2;
       display: flex; gap: 1.2rem; margin-top: 2.8rem; flex-wrap: wrap;
-      /* FIX: extra bottom margin to separate from content below */
-      margin-bottom: 3rem;
       opacity: 0; animation: fadeUp .9s .9s forwards;
     }
     .btn-primary {
@@ -669,7 +746,8 @@
       .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
       .process-steps::before { display: none; }
       .footer-top { grid-template-columns: 1fr 1fr; }
-      .hero-logo { opacity: .05; right: 2vw; }
+      #hero { grid-template-columns: 1fr 1fr; }
+      .hero-carousel-wrap { height: 100vh; }
     }
 
     @media (max-width: 768px) {
@@ -711,11 +789,12 @@
       .mobile-menu.open .mobile-menu-cta { opacity: 1; transform: translateX(0); transition-delay: .45s !important; }
       .mobile-menu-cta::after { display: none !important; }
 
-      #hero { padding: 100px 5vw 5rem; min-height: 100svh; justify-content: flex-end; }
-      .hero-logo { display: none; }
-      .hero-title { font-size: clamp(2.6rem, 10vw, 4rem); }
+      #hero { grid-template-columns: 1fr; min-height: 100svh; }
+      .hero-content { padding: 100px 5vw 3rem; }
+      .hero-carousel-wrap { height: 55vw; min-height: 260px; }
+      .hero-title { font-size: clamp(2.4rem, 10vw, 4rem); }
       .hero-sub { font-size: .85rem; margin-top: 1.2rem; max-width: 100%; }
-      .hero-actions { flex-direction: column; gap: .8rem; margin-top: 2rem; margin-bottom: 1.5rem; }
+      .hero-actions { flex-direction: column; gap: .8rem; margin-top: 2rem; }
       .btn-primary, .btn-ghost { text-align: center; padding: 1rem 1.5rem; font-size: .72rem; }
       .hero-scroll { display: none; }
       section { padding: 4.5rem 5vw; }
@@ -794,29 +873,80 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
-    
-    <div class="hero-logo">
-      <svg width="300" height="300" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="200" height="200" rx="20" fill="#172340" stroke="#c4892d" stroke-width="2"/>
-        <text x="100" y="65" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="32" font-weight="700" fill="#c4892d" letter-spacing="4">SCHELL</text>
-        <text x="100" y="100" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="18" font-weight="300" fill="#f4f0eb" letter-spacing="6">REFRIGERAÇÃO</text>
-        <line x1="40" y1="120" x2="160" y2="120" stroke="#c4892d" stroke-width="1" opacity="0.5"/>
-        <text x="100" y="148" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="10" fill="#c8c0b4" letter-spacing="3">DESDE 2009</text>
-        <text x="100" y="170" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="9" fill="#c8c0b4" letter-spacing="2">CRICIÚMA • SC</text>
-      </svg>
+
+    <!-- Coluna esquerda: texto -->
+    <div class="hero-content">
+      <span class="hero-tag">Especialistas em Refrigeração Comercial · Criciúma e Região</span>
+      <h1 class="hero-title">Soluções completas<br/>em <em>refrigeração</em><br/>para seu negócio.</h1>
+      <p class="hero-sub">Precisão técnica, atendimento profissional e experiência em refrigeração e climatização comercial e residencial. A Schell Refrigeração atende Criciúma e região, com soluções para empresas e residências que valorizam eficiência, organização e alto padrão de execução.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Solicitar Orçamento</a>
+        <a href="#services" class="btn-ghost">Nossos Serviços</a>
+      </div>
     </div>
 
-    <span class="hero-tag">Especialistas em Refrigeração Comercial · Criciúma e Região</span>
-    <h1 class="hero-title">Soluções completas<br/>em <em>refrigeração</em><br/>para seu negócio.</h1>
-    <p class="hero-sub">Precisão técnica, atendimento profissional e experiência em refrigeração e climatização comercial e residencial. A Schell Refrigeração atende Criciúma e região, com soluções para empresas e residências que valorizam eficiência, organização e alto padrão de execução.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Solicitar Orçamento</a>
-      <a href="#services" class="btn-ghost">Nossos Serviços</a>
+    <!-- Coluna direita: carrossel de fotos -->
+    <div class="hero-carousel-wrap" id="heroCarouselWrap">
+      <div class="hero-carousel-track" id="heroTrack">
+
+        <!--
+          ══════════════════════════════════════════════
+          COMO ADICIONAR FOTOS:
+          Substitua cada bloco .hero-slide-placeholder por:
+            <img src="fotos/nome-da-foto.jpg" alt="Descrição" />
+          As imagens devem ter proporção retrato ou quadrada.
+          ══════════════════════════════════════════════
+        -->
+
+        <div class="hero-carousel-slide">
+          <div class="hero-slide-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p>Foto 1<br/>Adicione sua imagem aqui</p>
+          </div>
+        </div>
+
+        <div class="hero-carousel-slide">
+          <div class="hero-slide-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p>Foto 2<br/>Adicione sua imagem aqui</p>
+          </div>
+        </div>
+
+        <div class="hero-carousel-slide">
+          <div class="hero-slide-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p>Foto 3<br/>Adicione sua imagem aqui</p>
+          </div>
+        </div>
+
+        <div class="hero-carousel-slide">
+          <div class="hero-slide-placeholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p>Foto 4<br/>Adicione sua imagem aqui</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navegação -->
+      <div class="hero-carousel-nav">
+        <button class="hero-carousel-btn" id="heroPrev" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="hero-carousel-btn" id="heroNext" aria-label="Próxima foto">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Dots -->
+      <div class="hero-carousel-dots" id="heroDots"></div>
+
+      <!-- Contador -->
+      <div class="hero-carousel-counter" id="heroCounter">
+        <span id="heroCurrentSlide">1</span> / <span id="heroTotalSlides">4</span>
+      </div>
     </div>
-    <div class="hero-scroll">
-      <span>Rolar</span>
-      <div class="scroll-line"></div>
-    </div>
+
   </section>
 
   <!-- STRIP -->
@@ -1268,6 +1398,56 @@
 
   <script>
 
+
+    // ── HERO CAROUSEL ──
+    (function() {
+      const track   = document.getElementById('heroTrack');
+      const slides  = track ? track.querySelectorAll('.hero-carousel-slide') : [];
+      const dotsWrap = document.getElementById('heroDots');
+      const counterCurrent = document.getElementById('heroCurrentSlide');
+      const counterTotal   = document.getElementById('heroTotalSlides');
+      let current = 0;
+      let autoTimer;
+
+      if (!slides.length) return;
+
+      // Build dots
+      if (counterTotal) counterTotal.textContent = slides.length;
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Foto ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+
+      function goTo(idx) {
+        current = (idx + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsWrap.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+        if (counterCurrent) counterCurrent.textContent = current + 1;
+        resetAuto();
+      }
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(current + 1), 5000);
+      }
+
+      document.getElementById('heroPrev')?.addEventListener('click', () => goTo(current - 1));
+      document.getElementById('heroNext')?.addEventListener('click', () => goTo(current + 1));
+
+      // Swipe support
+      let touchStartX = 0;
+      const wrap = document.getElementById('heroCarouselWrap');
+      wrap?.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      wrap?.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+      }, { passive: true });
+
+      resetAuto();
+    })();
 
     // ── NAV SCROLL ──
     const navbar = document.getElementById('navbar');
