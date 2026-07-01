@@ -1176,6 +1176,8 @@
     </div>
     <div class="testimonials-wrap" id="testWrap">
       <div class="testimonials-track" id="testTrack">
+
+        <!-- Card 1 -->
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="test-text">"Excelente profissional! Realizou o conserto da minha máquina de lavar e a instalação de ar-condicionado com muita técnica e capricho. Também aproveitei para fazer a higienização dos aparelhos e o serviço ficou impecável. Além de versátil e competente, cobra um preço justo pelo trabalho. Com certeza voltarei a contratar e recomendo a todos que buscam qualidade e confiança!"</p>
@@ -1184,6 +1186,8 @@
             <div><div class="test-name">Gerusa Schell dos Santos</div><div class="test-role">Cliente</div></div>
           </div>
         </div>
+
+        <!-- Card 2 -->
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="test-text">"A Schell Refrigeração, por meio do Israel, nos atende há mais de uma década com extrema competência e profissionalismo. Ao longo de todos esses anos, sempre demonstrou responsabilidade, confiança e amplo conhecimento técnico, prestando um atendimento de excelência. Destaco também o respeito com o cliente, a dedicação e a prontidão em nos atender, tanto em ações preventivas quanto em situações de emergência. É uma empresa que transmite segurança e credibilidade, razão pela qual conta com nossa total confiança e recomendação"</p>
@@ -1192,6 +1196,8 @@
             <div><div class="test-name">Eduardo Cunha</div><div class="test-role">Empresário</div></div>
           </div>
         </div>
+
+        <!-- Card 3 -->
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="test-text">"Excelente atendimento! Muito sério, pontual e profissional. Consertou minha máquina de lavar com competência, explicou o problema de forma clara e realizou o serviço com qualidade. Demonstra honestidade e compromisso com o cliente. Recomendo com confiança!"</p>
@@ -1199,15 +1205,19 @@
             <div class="test-avatar">G</div>
             <div><div class="test-name">Gisele Godoi</div><div class="test-role">Cliente</div></div>
           </div>
-        <div>
-       <div class="testimonial-card">
-        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="testimonial-card">
+          <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="test-text">"Ótimo profissional, correto e sempre prestativo, anos como seu cliente, nunca nos deixou na mão, sempre com a melhor solução."</p>
           <div class="test-author">
             <div class="test-avatar">E</div>
             <div><div class="test-name">Evanio Pereria Trajano</div><div class="test-role">Cliente</div></div>
           </div>
         </div>
+
+        <!-- Card 5 -->
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="test-text">"Todas as vezes que tive problema e procurei pelos serviços da Schell Refrigeração, eles resolveram. E fizeram sempre além do que eu esperava. São profissionais e muito solícitos, por tudo isso eu Recomendo a Schell Refrigeração."</p>
@@ -1216,6 +1226,8 @@
             <div><div class="test-name">John Sebastian Lopes</div><div class="test-role">Cliente</div></div>
           </div>
         </div>
+
+        <!-- Card 6 -->
         <div class="testimonial-card">
           <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="test-text">"Ótimo atendimento, serviço profissional!"</p>
@@ -1224,6 +1236,7 @@
             <div><div class="test-name">João Vitor</div><div class="test-role">Projetista - Engenheiro Mecatrônico</div></div>
           </div>
         </div>
+
       </div>
     </div>
     <div class="testimonials-nav">
@@ -1405,8 +1418,6 @@
   </footer>
 
   <script>
-
-
     // ── HERO CAROUSEL ──
     (function() {
       const track   = document.getElementById('heroTrack');
@@ -1419,38 +1430,38 @@
 
       if (!slides.length) return;
 
-      // Build dots
       if (counterTotal) counterTotal.textContent = slides.length;
       slides.forEach((_, i) => {
         const dot = document.createElement('button');
         dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Foto ${i + 1}`);
-        dot.addEventListener('click', () => goTo(i));
+        dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+        dot.addEventListener('click', function() { goTo(i); });
         dotsWrap.appendChild(dot);
       });
 
       function goTo(idx) {
         current = (idx + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        dotsWrap.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dotsWrap.querySelectorAll('.hero-dot').forEach(function(d, i) {
+          d.classList.toggle('active', i === current);
+        });
         if (counterCurrent) counterCurrent.textContent = current + 1;
         resetAuto();
       }
 
       function resetAuto() {
         clearInterval(autoTimer);
-        autoTimer = setInterval(() => goTo(current + 1), 5000);
+        autoTimer = setInterval(function() { goTo(current + 1); }, 5000);
       }
 
-      document.getElementById('heroPrev')?.addEventListener('click', () => goTo(current - 1));
-      document.getElementById('heroNext')?.addEventListener('click', () => goTo(current + 1));
+      document.getElementById('heroPrev').addEventListener('click', function() { goTo(current - 1); });
+      document.getElementById('heroNext').addEventListener('click', function() { goTo(current + 1); });
 
-      // Swipe support
-      let touchStartX = 0;
-      const wrap = document.getElementById('heroCarouselWrap');
-      wrap?.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      wrap?.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].clientX;
+      var wrap = document.getElementById('heroCarouselWrap');
+      var touchStartX = 0;
+      wrap.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+      wrap.addEventListener('touchend', function(e) {
+        var diff = touchStartX - e.changedTouches[0].clientX;
         if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
       }, { passive: true });
 
@@ -1458,16 +1469,16 @@
     })();
 
     // ── NAV SCROLL ──
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
       navbar.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
     // ── MOBILE MENU ──
     function toggleMobile() {
-      const menu = document.getElementById('mobileMenu');
-      const ham  = document.getElementById('hamburger');
-      const open = menu.classList.toggle('open');
+      var menu = document.getElementById('mobileMenu');
+      var ham  = document.getElementById('hamburger');
+      var open = menu.classList.toggle('open');
       ham.classList.toggle('open', open);
       if (ham) ham.setAttribute('aria-expanded', open);
       document.body.style.overflow = open ? 'hidden' : '';
@@ -1479,57 +1490,57 @@
     }
 
     // ── REVEAL ON SCROLL ──
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
+    var reveals = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
         if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => io.observe(el));
+    reveals.forEach(function(el) { io.observe(el); });
 
     // ── TESTIMONIALS SLIDER ──
-    const track = document.getElementById('testTrack');
-    let testIdx = 0;
+    var testTrack = document.getElementById('testTrack');
+    var testIdx = 0;
 
     function getVisibleCount() {
       return window.innerWidth <= 768 ? 1 : 2;
     }
 
     function getSlideDistance() {
-      if (!track?.parentElement) return 0;
-      const wrapperWidth = track.parentElement.offsetWidth;
-      const visible = getVisibleCount();
-      const gap = window.innerWidth <= 768 ? 0 : 32;
-      const cardWidth = (wrapperWidth - gap * (visible - 1)) / visible;
+      if (!testTrack || !testTrack.parentElement) return 0;
+      var wrapperWidth = testTrack.parentElement.offsetWidth;
+      var visible = getVisibleCount();
+      var gap = window.innerWidth <= 768 ? 0 : 32;
+      var cardWidth = (wrapperWidth - gap * (visible - 1)) / visible;
       return cardWidth + gap;
     }
 
     function updateSlider() {
-      if (!track) return;
-      const maxIndex = Math.max(0, track.children.length - getVisibleCount());
+      if (!testTrack) return;
+      var maxIndex = Math.max(0, testTrack.children.length - getVisibleCount());
       testIdx = Math.max(0, Math.min(testIdx, maxIndex));
-      track.style.transform = `translateX(-${testIdx * getSlideDistance()}px)`;
+      testTrack.style.transform = 'translateX(-' + (testIdx * getSlideDistance()) + 'px)';
     }
 
     function slideTest(dir) {
-      const maxIndex = Math.max(0, track.children.length - getVisibleCount());
+      var maxIndex = Math.max(0, testTrack.children.length - getVisibleCount());
       testIdx = Math.max(0, Math.min(testIdx + dir, maxIndex));
       updateSlider();
     }
 
-    if (track) {
+    if (testTrack) {
       window.addEventListener('load', updateSlider);
-      let resizeTimer;
-      window.addEventListener('resize', () => {
+      var resizeTimer;
+      window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => { testIdx = 0; updateSlider(); }, 150);
+        resizeTimer = setTimeout(function() { testIdx = 0; updateSlider(); }, 150);
       });
-      document.getElementById('testPrev')?.addEventListener('click', () => slideTest(-1));
-      document.getElementById('testNext')?.addEventListener('click', () => slideTest(1));
+      document.getElementById('testPrev').addEventListener('click', function() { slideTest(-1); });
+      document.getElementById('testNext').addEventListener('click', function() { slideTest(1); });
     }
 
     // ── FORM SEND MODE ──
-    let sendMode = 'email'; // 'email' | 'whatsapp'
+    var sendMode = 'email';
 
     function setSendMode(mode) {
       sendMode = mode;
@@ -1538,20 +1549,20 @@
     }
 
     // ── FORM SUBMIT ──
-    const contactForm = document.getElementById('contactForm');
-    const formStatus  = document.getElementById('formStatus');
+    var contactForm = document.getElementById('contactForm');
+    var formStatus  = document.getElementById('formStatus');
 
     if (contactForm) {
       contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const submitBtn = this.querySelector('.form-submit');
-        const originalText = submitBtn.textContent;
+        var submitBtn = this.querySelector('.form-submit');
+        var originalText = submitBtn.textContent;
 
-        const nome     = document.getElementById('name').value.trim();
-        const telefone = document.getElementById('phone').value.trim();
-        const emailVal = document.getElementById('email').value.trim();
-        const servico  = document.getElementById('service').value || 'Não especificado';
-        const mensagem = document.getElementById('message').value.trim();
+        var nome     = document.getElementById('name').value.trim();
+        var telefone = document.getElementById('phone').value.trim();
+        var emailVal = document.getElementById('email').value.trim();
+        var servico  = document.getElementById('service').value || 'Não especificado';
+        var mensagem = document.getElementById('message').value.trim();
 
         if (!nome || !telefone || !emailVal || !mensagem) {
           if (formStatus) formStatus.innerHTML = '<span style="color:#e74c3c;">❌ Por favor, preencha todos os campos obrigatórios (*).</span>';
@@ -1563,30 +1574,27 @@
 
         try {
           if (sendMode === 'email') {
-            // ── Envio via mailto (abre o cliente de e-mail do usuário) ──
-            const subject = encodeURIComponent(`Orçamento Schell Refrigeração – ${servico}`);
-            const body = encodeURIComponent(
-              `Olá, gostaria de solicitar um orçamento.\n\n` +
-              `Nome: ${nome}\n` +
-              `Telefone: ${telefone}\n` +
-              `E-mail: ${emailVal}\n` +
-              `Serviço: ${servico}\n\n` +
-              `Mensagem:\n${mensagem}`
+            var subject = encodeURIComponent('Orçamento Schell Refrigeração – ' + servico);
+            var body = encodeURIComponent(
+              'Olá, gostaria de solicitar um orçamento.\n\n' +
+              'Nome: ' + nome + '\n' +
+              'Telefone: ' + telefone + '\n' +
+              'E-mail: ' + emailVal + '\n' +
+              'Serviço: ' + servico + '\n\n' +
+              'Mensagem:\n' + mensagem
             );
-            window.location.href = `mailto:schell_scervices@outlook.com?subject=${subject}&body=${body}`;
-
+            window.location.href = 'mailto:schell_scervices@outlook.com?subject=' + subject + '&body=' + body;
           } else {
-            // ── Envio via WhatsApp ──
-            const waMsg = encodeURIComponent(
-              `Olá! Gostaria de solicitar um orçamento para refrigeração.\n\n` +
-              `*Dados:*\n` +
-              `📛 Nome: ${nome}\n` +
-              `📞 Telefone: ${telefone}\n` +
-              `✉️ Email: ${emailVal}\n` +
-              `🔧 Serviço: ${servico}\n` +
-              `📝 Mensagem: ${mensagem}`
+            var waMsg = encodeURIComponent(
+              'Olá! Gostaria de solicitar um orçamento para refrigeração.\n\n' +
+              '*Dados:*\n' +
+              '📛 Nome: ' + nome + '\n' +
+              '📞 Telefone: ' + telefone + '\n' +
+              '✉️ Email: ' + emailVal + '\n' +
+              '🔧 Serviço: ' + servico + '\n' +
+              '📝 Mensagem: ' + mensagem
             );
-            window.open(`https://wa.me/5548988340861?text=${waMsg}`, '_blank');
+            window.open('https://wa.me/5548988340861?text=' + waMsg, '_blank');
           }
 
           this.reset();
@@ -1594,7 +1602,7 @@
           submitBtn.textContent = 'Mensagem Enviada ✓';
           submitBtn.style.background = '#2d8a5e';
 
-          setTimeout(() => {
+          setTimeout(function() {
             submitBtn.textContent = originalText;
             submitBtn.style.background = '';
             submitBtn.disabled = false;
@@ -1602,7 +1610,7 @@
           }, 5000);
 
         } catch (err) {
-          if (formStatus) formStatus.innerHTML = `<span style="color:#e74c3c;">❌ Erro ao enviar. Ligue para (48) 98834-0861.</span>`;
+          if (formStatus) formStatus.innerHTML = '<span style="color:#e74c3c;">❌ Erro ao enviar. Ligue para (48) 98834-0861.</span>';
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
         }
@@ -1610,49 +1618,48 @@
     }
 
     // ── FAQ ──
-    const faqs = [
+    var faqs = [
       { q: 'Quanto custa instalar uma câmara fria em Criciúma?', a: 'O valor varia conforme o tamanho, temperatura necessária e complexidade do projeto. Realizamos visita técnica e orçamento. Entre em contato para agendar.' },
       { q: 'Vocês atendem restaurantes e mercados em Içara, Urussanga e outras cidades?', a: 'Sim. Atendemos Criciúma e toda a região sul catarinense: Içara, Urussanga, Siderópolis, Nova Veneza, Treviso, Tubarão, Araranguá, Forquilhinha e municípios vizinhos.' },
       { q: 'Quais marcas de equipamentos de refrigeração vocês trabalham?', a: 'Trabalhamos com as melhores marcas do mercado: Danfoss, Copeland, Elgin, Carrier, Daikin, entre outras. Todas com garantia de fábrica e suporte técnico especializado.' },
       { q: 'Qual a frequência ideal de manutenção da câmara fria?', a: 'Recomendamos manutenção preventiva a cada 3 meses. A limpeza regular garante eficiência, economia e maior vida útil.' },
-      { q: 'Vocês fazem manutenção emergencial 24h?', a: 'Sim! Oferecemos atendimento de emergência 24 horas por dia, 7 dias por semana. Uma parada no sistema de refrigeração pode significar perda de produtos, por isso estamos sempre disponíveis.' },
+      { q: 'Vocês fazem manutenção emergencial 24h?', a: 'Sim! Oferecemos atendimento de emergência 24 horas por dia, 7 dias por semana. Uma parada no sistema de refrigeração pode significar perda de produtos, por isso estamos sempre disponíveis.' }
     ];
 
-    const faqList = document.getElementById('faqList');
+    var faqList = document.getElementById('faqList');
     if (faqList) {
-      faqList.innerHTML = faqs.map((f, i) => `
-        <div class="faq-item reveal" style="border-bottom:1px solid rgba(196,137,45,.1); padding:1.6rem 0;" data-idx="${i}">
-          <button onclick="toggleFaq(${i})"
-                  style="width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;color:var(--white);"
-                  aria-expanded="false"
-                  id="faq-btn-${i}">
-            <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;line-height:1.3;">${f.q}</span>
-            <span class="faq-icon" id="faq-icon-${i}" style="color:var(--gold);font-size:1.4rem;flex-shrink:0;transition:transform .3s;">+</span>
-          </button>
-          <div class="faq-answer" id="faq-ans-${i}" style="max-height:0;overflow:hidden;transition:max-height .4s ease, padding .3s ease;" aria-labelledby="faq-btn-${i}">
-            <p style="font-size:.88rem;line-height:1.9;color:var(--white-d);padding-top:1rem;">${f.a}</p>
-          </div>
-        </div>`).join('');
-          faqList.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      var faqHTML = '';
+      faqs.forEach(function(f, i) {
+        faqHTML += '<div class="faq-item reveal" style="border-bottom:1px solid rgba(196,137,45,.1); padding:1.6rem 0;" data-idx="' + i + '">';
+        faqHTML += '<button onclick="toggleFaq(' + i + ')" style="width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;color:var(--white);" aria-expanded="false" id="faq-btn-' + i + '">';
+        faqHTML += '<span style="font-family:\'Cormorant Garamond\',serif;font-size:1.2rem;font-weight:400;line-height:1.3;">' + f.q + '</span>';
+        faqHTML += '<span class="faq-icon" id="faq-icon-' + i + '" style="color:var(--gold);font-size:1.4rem;flex-shrink:0;transition:transform .3s;">+</span>';
+        faqHTML += '</button>';
+        faqHTML += '<div class="faq-answer" id="faq-ans-' + i + '" style="max-height:0;overflow:hidden;transition:max-height .4s ease, padding .3s ease;" aria-labelledby="faq-btn-' + i + '">';
+        faqHTML += '<p style="font-size:.88rem;line-height:1.9;color:var(--white-d);padding-top:1rem;">' + f.a + '</p>';
+        faqHTML += '</div></div>';
+      });
+      faqList.innerHTML = faqHTML;
+      faqList.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
     }
 
-    let openFaq = null;
+    var openFaq = null;
     window.toggleFaq = function(idx) {
-      const ans  = document.getElementById('faq-ans-'+idx);
-      const icon = document.getElementById('faq-icon-'+idx);
-      const btn  = document.getElementById('faq-btn-'+idx);
+      var ans  = document.getElementById('faq-ans-' + idx);
+      var icon = document.getElementById('faq-icon-' + idx);
+      var btn  = document.getElementById('faq-btn-' + idx);
       if (!ans || !icon) return;
 
       if (openFaq !== null && openFaq !== idx) {
-        const prevAns  = document.getElementById('faq-ans-'+openFaq);
-        const prevIcon = document.getElementById('faq-icon-'+openFaq);
-        const prevBtn  = document.getElementById('faq-btn-'+openFaq);
+        var prevAns  = document.getElementById('faq-ans-' + openFaq);
+        var prevIcon = document.getElementById('faq-icon-' + openFaq);
+        var prevBtn  = document.getElementById('faq-btn-' + openFaq);
         if (prevAns)  prevAns.style.maxHeight = '0';
         if (prevIcon) { prevIcon.textContent = '+'; prevIcon.style.transform = 'rotate(0deg)'; }
         if (prevBtn)  prevBtn.setAttribute('aria-expanded', 'false');
       }
 
-      const isOpen = ans.style.maxHeight !== '0px' && ans.style.maxHeight !== '';
+      var isOpen = ans.style.maxHeight !== '0px' && ans.style.maxHeight !== '';
       ans.style.maxHeight  = isOpen ? '0' : '300px';
       icon.textContent     = isOpen ? '+' : '−';
       icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
