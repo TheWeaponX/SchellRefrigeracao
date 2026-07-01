@@ -152,6 +152,9 @@
       color: var(--white); font-weight: 400;
     }
     .nav-logo-text span { color: var(--gold); }
+    @media (max-width: 380px) {
+      .nav-logo-text { display: none; }
+    }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       color: var(--white-d); text-decoration: none;
@@ -769,8 +772,9 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="logo">
-      <a href="#inicio">
+      <a href="#inicio" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
         <img src="logo-schell-quadrado.png" alt="Schell Refrigeração - Especialistas em Refrigeração Comercial e Residencial" />
+        <span class="nav-logo-text">Schell <span>Refrigeração</span></span>
       </a>
     </div>
     <ul class="nav-links">
