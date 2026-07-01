@@ -360,7 +360,6 @@
       background: var(--navy-d); padding: 3rem 2.5rem;
       border-top: 2px solid transparent;
       transition: border-color .3s, background .3s;
-      cursor: none;
     }
     .service-card:hover { border-color: var(--gold); background: var(--navy-m); }
     .service-icon {
@@ -671,8 +670,6 @@
     }
 
     @media (max-width: 768px) {
-      body { cursor: auto; }
-      .cursor, .cursor-ring { display: none; }
       .form-group input, .form-group select, .form-group textarea { cursor: auto; }
       .form-submit, .hamburger, .send-opt-btn { cursor: pointer; }
       .whatsapp-btn { cursor: pointer; }
@@ -748,7 +745,6 @@
 
     @media (min-width: 769px) {
       .mobile-menu { display: none !important; }
-      body, body * { cursor: none !important; }
     }
   </style>
 </head>
@@ -1270,22 +1266,6 @@
   </footer>
 
   <script>
-    // ── CURSOR (desktop only) ──
-    const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
-    const cursor = document.getElementById('cursor');
-    const ring   = document.getElementById('cursorRing');
-    let mx=0, my=0, rx=0, ry=0;
-    if (!isTouchDevice()) {
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        cursor.style.left = mx+'px'; cursor.style.top = my+'px';
-      });
-      (function animRing() {
-        rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-        ring.style.left=rx+'px'; ring.style.top=ry+'px';
-        requestAnimationFrame(animRing);
-      })();
-    }
 
     // ── NAV SCROLL ──
     const navbar = document.getElementById('navbar');
