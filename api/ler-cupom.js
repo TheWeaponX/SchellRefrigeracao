@@ -1,7 +1,16 @@
-// Arquivo: api/ler-cupom.js
-
 export default async function handler(req, res) {
-    // Bloqueia qualquer coisa que não seja POST
+    // 1. Configurações de CORS (Permite que o seu HTML converse com a Vercel)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+
+    // 2. Libera a requisição de pré-verificação de segurança do navegador (OPTIONS)
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
+    // 3. Bloqueia requisições que não sejam o envio do formulário (POST)
     if (req.method !== 'POST') {
         return res.status(405).json({ erro: 'Método não permitido' });
     }
@@ -11,10 +20,8 @@ export default async function handler(req, res) {
         return res.status(400).json({ erro: 'Nenhuma imagem fornecida' });
     }
 
-    // A chave da API fica segura nas variáveis de ambiente da Vercel
     const apiKey = process.env.GEMINI_API_KEY;
 
-    // A instrução restrita para a IA retornar apenas o formato exato que o seu ERP precisa
     const prompt = `Você é um leitor de cupons fiscais brasileiros. 
     Analise a imagem e extraia os dados estritamente no seguinte formato JSON, sem marcações ou textos adicionais:
     {
@@ -41,7 +48,7 @@ export default async function handler(req, res) {
 
         const data = await geminiResponse.json();
         
-        // Pega a resposta de texto da IA e transforma de volta em JSON para seu ERP
+        // Trata e limpa o texto que volta da IA
         const textoIA = data.candidates[0].content.parts[0].text;
         const jsonLimpo = textoIA.replace(/```json/g, '').replace(/```/g, '').trim();
         const resultadoFinal = JSON.parse(jsonLimpo);
