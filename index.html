@@ -308,6 +308,7 @@
       border: none; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 600;
     }
     .form-submit:hover { background: var(--gold-l); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
     /* ── FOOTER ── */
     footer { background: var(--navy-d); border-top: 1px solid rgba(196,137,45,.12); padding: 3rem 5vw 2rem; }
@@ -736,7 +737,7 @@
       ico.textContent = open ? '+' : '−';
     };
 
-    // Form Submit
+    // Form Submit (WhatsApp + Envio direto de E-mail via Web3Forms)
     let sendMode = 'whatsapp';
     function setSendMode(mode) {
       sendMode = mode;
@@ -744,7 +745,7 @@
       document.getElementById('optEmail').classList.toggle('active', mode === 'email');
     }
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const nome = document.getElementById('name').value.trim();
       const tel = document.getElementById('phone').value.trim();
@@ -752,6 +753,7 @@
       const servico = document.getElementById('service').value || 'Geral';
       const msg = document.getElementById('message').value.trim();
       const status = document.getElementById('formStatus');
+      const submitBtn = this.querySelector('.form-submit');
 
       if (!nome || !tel || !email || !msg) {
         status.innerHTML = '<span style="color:#e74c3c;">Preencha todos os campos obrigatórios (*).</span>';
@@ -761,14 +763,45 @@
       if (sendMode === 'whatsapp') {
         const text = encodeURIComponent(`Olá! Gostaria de um orçamento.\n*Nome:* ${nome}\n*Tel:* ${tel}\n*Serviço:* ${servico}\n*Mensagem:* ${msg}`);
         window.open(`https://wa.me/5548988340861?text=${text}`, '_blank');
-      } else {
-        const sub = encodeURIComponent(`Orçamento Schell – ${servico}`);
-        const body = encodeURIComponent(`Nome: ${nome}\nTelefone: ${tel}\nE-mail: ${email}\nServiço: ${servico}\n\n${msg}`);
-        window.location.href = `mailto:schell_services@outlook.com?subject=${sub}&body=${body}`;
+        this.reset();
+        status.innerHTML = '<span style="color:#2d8a5e;">✓ Abrindo WhatsApp...</span>';
+        return;
       }
 
-      this.reset();
-      status.innerHTML = '<span style="color:#2d8a5e;">✓ Redirecionando para atendimento...</span>';
+      // Envio direto para o e-mail
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      status.innerHTML = '';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'COLE_SUA_CHAVE_AQUI', // <-- Substitua pela chave recebida no seu e-mail
+            subject: `Novo Orçamento pelo Site – ${servico}`,
+            from_name: 'Site Schell Refrigeração',
+            Nome: nome,
+            Telefone: tel,
+            Email: email,
+            Servico: servico,
+            Mensagem: msg
+          })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          this.reset();
+          status.innerHTML = '<span style="color:#2d8a5e;">✓ E-mail enviado com sucesso! Entraremos em contato em breve.</span>';
+        } else {
+          status.innerHTML = '<span style="color:#e74c3c;">Erro ao enviar. Tente pelo WhatsApp.</span>';
+        }
+      } catch (err) {
+        status.innerHTML = '<span style="color:#e74c3c;">Falha de conexão. Tente novamente ou chame no WhatsApp.</span>';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar Solicitação';
+      }
     });
   </script>
 </body>
