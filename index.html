@@ -718,7 +718,7 @@
     const faqs = [
       { q: 'Qual a frequência ideal de manutenção preventiva?', a: 'Recomendamos manutenção preventiva trimestral para manter a eficiência e evitar falhas.' },
       { q: 'Realizam visita técnica para orçamento?', a: 'Sim. Avaliamos o espaço e dimensionamos o equipamento ideal para cada projeto.' },
-      { q: 'Quais cidades vocês atendem?', a: 'Atendemos Criciúma, Içara, Forquilhinha, Tubarão, Araranguá, Sombrio, Torres e região.' }
+      { q: 'Quais cidades vocês atendem?', a: 'Atendemos Criciúma, Içara, Forquilhinha, Tubarão, Araranguá, Sombrio e Torres.' }
     ];
     document.getElementById('faqList').innerHTML = faqs.map((f, i) => `
       <div class="faq-item">
@@ -778,7 +778,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            access_key: 'COLE_SUA_CHAVE_AQUI', // <-- Substitua pela chave recebida no seu e-mail
+            access_key: 'de5c51ac-c3b9-431d-92fb-0b7d3c756427',
             subject: `Novo Orçamento pelo Site – ${servico}`,
             from_name: 'Site Schell Refrigeração',
             Nome: nome,
