@@ -8,6 +8,33 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 </script>
+
+<!-- Conversões Google Ads – Schell Refrigeração (AW-18565913871)
+     Colar na <head> do site, logo DEPOIS da tag do Google que já existe. -->
+<script>
+(function () {
+  function conversao(label) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-18565913871/' + label,
+      value: 1.0,
+      currency: 'BRL'
+    });
+  }
+
+  // Clique em qualquer link de WhatsApp (botão flutuante, cabeçalho, rodapé...)
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href*="whatsapp://"]');
+    if (link) conversao('p0e_CM3qkcAdEI-69ZRF'); // Clique no WhatsApp – Site
+  }, true);
+
+  // Envio do formulário de contato
+  document.addEventListener('submit', function (e) {
+    if (e.target && e.target.tagName === 'FORM') conversao('Y0ySCNDqkcAdEI-69ZRF'); // Envio do formulário – Site
+  }, true);
+})();
+</script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
